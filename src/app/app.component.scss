@@ -1,0 +1,18 @@
+#sidebar {
+    width: 220px;
+    padding: 100px 15px 0px 15px;
+    z-index: 1;
+}
+
+#content-window {
+    @media screen and (min-width: 1025px) {
+        margin-left: 220px;
+    }   
+    padding: 60px 20px 20px 20px;
+}
+
+#footer {
+    @media screen and (min-width: 1025px) {
+        margin-left: 220px;
+    }   
+}

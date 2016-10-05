@@ -1,0 +1,15 @@
+nav {
+    height: 88px;
+    background-color: #fff;
+    padding: 0px 20px 0px 20px;
+}
+
+.brand-logo {
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+#brand-img {
+    height: 42px;
+    width: 71px;
+}

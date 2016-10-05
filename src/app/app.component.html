@@ -1,3 +1,15 @@
-<h1>
-  {{title}}
-</h1>
+<app-top-nav (sideNavChange)="toggleSideNav()"></app-top-nav>
+
+<div class="row">
+    <div id="sidebar" class="side-nav fixed">
+        <app-side-nav [expanded]="sideNavExpanded"></app-side-nav>
+    </div>
+
+    <div id="content-window">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+<div id="footer">
+<app-footer></app-footer>
+</div>
