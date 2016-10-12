@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <div [@expandedState]="expansion" class="card-content chart-container">
+                <app-cash-flow-chart [data]="data"></app-cash-flow-chart>
+                <div class="row mod-group">
+                    <div class="col s12 m6 modifiers">
+                        <div class="row mod-header">
+                            <div class="col s3">Vendor</div>
+                            <div class="col s2"><p class="align-center">Pay?</p></div>
+                            <div class="col s3">Amount</div>
+                            <div class="col s4">Date</div>
+                        </div>
+                        <div class="mod-body">
+                            <div class="row mod-row" *ngFor="let bill of bills; let i = index" [class.shaded]="(i % 2) === 0">
+                                <div class="col s3 truncate">{{ bill.name }}</div>
+                                <div class="col s2">
+                                    <p class="center-align"><input type="checkbox" id="bill-{{bill.id}}" [checked]="bill.include"><label [attr.for]="'bill-' + bill.id"></label></p>
+                                </div>
+                                <div class="col s3"><input class="mod-input" type="number" value="{{ bill.amount }}"></div>
+                                <div class="col s4"><input class="mod-input" type="date" value="{{ bill.date }}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m6 modifiers">
+                        <div class="row mod-header">
+                            <div class="col s3">Customer</div>
+                            <div class="col s2">Collect?</div>
+                            <div class="col s3">Amount</div>
+                            <div class="col s4">Date</div>
+                        </div>
+                        <div class="mod-body">
+                            <div class="row mod-row" *ngFor="let invoice of invoices; let i = index" [class.shaded]="(i % 2) === 0">
+                                <div class="col s3 truncate">{{ invoice.name }}</div>
+                                <div class="col s2">
+                                    <p class="center-align"><input type="checkbox" id="invoice-{{invoice.id}}" [checked]="invoice.include"><label [attr.for]="'invoice-' + invoice.id"></label></p>
+                                </div>
+                                <div class="col s3"><input class="mod-input" type="number" value="{{ invoice.amount }}"></div>
+                                <div class="col s4"><input class="mod-input" type="date" value="{{ invoice.date }}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-action">
+                <a *ngIf="expansion === 'contracted'" href="" (click)="expand($event)">Adjust Projection</a>
+                <a *ngIf="expansion === 'expanded'" href="" (click)="contract($event)">Hide Modifiers</a>
+                <a href="" (click)="contract($event)">Reset</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,22 @@
-#side-navbar {
-    margin-top: 25px;
-    /*height: 4000px;
-    overflow: auto;*/
+.user-panel {
+    height: 150px;
+    background: linear-gradient(#CECECE, #FFF);
+    padding: 10px;
+}
+
+.select-dropdown li span {
+    color: #000; /* no need for !important :) */
+}
+
+.nav-links {
+    padding: 10px;
+}
+
+.md-18 {
+    font-size: 18px;
+    margin-right: 10px !important;
+}
+
+#links-title {
+    font-size: 12px;
 }

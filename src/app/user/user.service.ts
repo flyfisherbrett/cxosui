@@ -4,10 +4,27 @@ import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { Subject } from 'rxjs/Subject';
 
+
+export interface User {
+  id: number;
+  first_name: string;
+  last_name: string;
+}
+
+export interface Company {
+  id: number;
+  name: string;
+  employee_id: number;
+  role: string;
+} // defining Company interface for Typescript; not required
+
 @Injectable()
 export class UserService {
   loggedIn = new Subject<Boolean>();
-  companySwitch = new Subject<Number>();
+  companySwitch = new Subject<Company>(); 
+  // anything subscribed will now know the attributes because of the 'Company' type;
+  // must define the interface first to use this type, this was previously set to 'Object'
+  // before Company interface was defined;
 
   constructor(private http: Http, private router: Router) {
     this.loggedIn.next(false); // when service is instantiated, loggedIn value is false
@@ -18,39 +35,39 @@ export class UserService {
 
     this.http.post(environment.apiEndpoint + 'api/sessions', creds)
       .subscribe(
-        res => {
-          localStorage.setItem('token', res.json().user.access_token);
-          this.loadSessionData(res.json());
-          this.loggedIn.next(true);
-          this.router.navigate(['dashboard']);
-        }, err => {
-            console.log(err);
-          alert(err.json().messages);
-        }
+      res => {
+        this.loadSessionData(res.json());
+        this.loggedIn.next(true);
+        this.router.navigate(['cash_flow']);
+      }, err => {
+        console.log(err);
+        alert(err.json().messages);
+      }
       );
   }
 
   loadSessionData(data) {
-    let adminCompanyIds = data.employees.reduce( (memo, emp) => {
-      if (emp.role === 'admin') { memo.push(emp.company_id); }
-      return memo;
-    }, []);
-    let companies = data.companies.filter( comp => {
-      return adminCompanyIds.includes(comp.id);
-    });
-    if (!this.getCompany()) { this.changeCompany(companies[0]); }
+    localStorage.setItem('user', JSON.stringify(data.user));
+    let companies = this.processCompanyRoles(data.companies, data.employees);
     localStorage.setItem('companies', JSON.stringify(companies));
+    if (!this.sameUser(this.getCompany(), companies)) { this.changeCompany(companies[0]); }
   }
 
-  changeCompany(company: Object) {
+  sameUser(company, companies) {
+    let found = companies.filter(c => {
+      return (c.name === company.name) && (c.employee_id === company.employee_id);
+    });
+    return found.length === 1;
+  }
+
+  changeCompany(company: Company) {
     localStorage.setItem('company', JSON.stringify(company));
-    this.companySwitch.next(company['id']);
+    this.companySwitch.next(company);
   }
 
   logout() {
-    localStorage.removeItem('token');
     localStorage.removeItem('companies');
-    localStorage.removeItem('company');
+    localStorage.removeItem('user');
     this.loggedIn.next(false);
     this.router.navigate(['/']);
   }
@@ -68,37 +85,34 @@ export class UserService {
     return JSON.parse(localStorage.getItem('company'));
   }
 
+  setCompany(id) {
+    let company = this.getCompanies().find(c => { return c.id === id; });
+    localStorage.setItem('company', JSON.stringify(company));
+    this.companySwitch.next(company);
+  }
+
+  processCompanyRoles(companies, employees) {
+    return companies.map(c => {
+      let employee = employees.find(e => {
+        return e.company_id === c.id;
+      });
+      c.employee_id = employee.id;
+      c.role = employee.role;
+      return c;
+    });
+  }
+
+  getUser() {
+    return JSON.parse(localStorage.getItem('user'));
+  }
+
   isLoggedIn() {
-    return !!localStorage.getItem('token');
+    return !!this.getUser();
   }
 
-  fakeLogIn() {
-      return {
-          user: {
-              name: 'Brett Grigsby',
-              token: 'faketoken'
-          },
-          companies: [
-              {name: 'Company 1', id: 1, role: 'admin'},
-              {name: 'Company 2', id: 2, role: 'admin'}
-              ]
-      };
-  }
-
-  fakeIsLoggedIn() {
-      return true;
-  }
-
-  fakeCompany() {
-      return {name: 'Company1', id: 1, role: 'admin'};
-  }
-
-  fakeCompanies() {
-      return [{name: 'Company 1', id: 1, role: 'admin'},
-              {name: 'Company 2', id: 2, role: 'admin'}];
-  }
-
-  fakeUser() {
-      return { name: 'Brett Grigsby', token: 'faketoken' };
+  headerToken() {
+    if (this.isLoggedIn()) {
+      return 'Bearer ' + this.getUser().access_token;
+    }
   }
 }

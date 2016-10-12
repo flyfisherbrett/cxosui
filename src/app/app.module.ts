@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { MaterializeModule } from 'angular2-materialize';
-import 'materialize-css';
+import { ChartModule } from 'angular2-highcharts';
 
 import { routing } from './app.routing';
 import { AppComponent } from './app.component';
@@ -15,7 +15,9 @@ import { FooterComponent } from './footer/footer.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
-
+import { CashFlowComponent } from './cash-flow/cash-flow.component';
+import { CashFlowChartComponent } from './cash-flow/cash-flow-chart/cash-flow-chart.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -25,13 +27,17 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     FooterComponent,
     BreadcrumbComponent,
     SideNavComponent,
-    DashboardComponent
+    DashboardComponent,
+    CashFlowComponent,
+    CashFlowChartComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     MaterializeModule,
+    ChartModule,
     routing
   ],
   providers: [UserService], // declared here to share data between components

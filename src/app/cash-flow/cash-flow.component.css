@@ -1,0 +1,39 @@
+.chart-container {
+    height: 350px;
+    /* this needs to match the contracted value for the animation in cash-flow.component.ts */
+    overflow: hidden;
+}
+
+.modifiers {
+    height: 100px; /* to prevent odd behavior from the last checkbox in the modifiers */
+}
+
+.mod-header {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 0;
+    border-bottom: 1px solid #dadada;
+}
+
+.mod-group {
+    font-size: 12px;
+}
+
+.mod-row {
+    margin-bottom: 0;
+    padding-top: 8px;
+}
+
+.mod-body {
+    height: 215px;
+    overflow: scroll;
+}
+
+.mod-input {
+    margin-bottom: 1px;
+    height: 20px;
+}
+
+.shaded {
+    background-color: #f2f2f2;
+}
