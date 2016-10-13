@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SessionService, Company, User } from './session/session.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,12 +16,16 @@ export class AppComponent {
   company: Company;
 
 
-  constructor(private sessionService: SessionService) {
+  constructor(private sessionService: SessionService, private router: Router) {
     if (this.sessionService.isLoggedIn()) {
       this.user = this.sessionService.getUser() || {};
       this.companies = this.sessionService.getCompanies();
       this.company = this.sessionService.getCompany();
     }
+
+    this.router.events.subscribe(event => {
+      if (event.url === '/') {this.sideNavExpanded = false; };
+    });
 
     this.sessionService.companySwitch.subscribe(c => {
       this.company = c;
@@ -28,6 +33,7 @@ export class AppComponent {
 
     this.sessionService.loggedIn.subscribe( loggedIn => {
       if (loggedIn) {
+        this.sideNavExpanded = true;
         this.user = this.sessionService.getUser();
         this.companies = this.sessionService.getCompanies();
         this.company = this.sessionService.getCompany();
@@ -35,6 +41,7 @@ export class AppComponent {
         this.user = null;
         this.companies = [];
         this.company = null;
+        this.sideNavExpanded = false;
       }
     });
   }

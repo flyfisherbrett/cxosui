@@ -4,7 +4,7 @@ import { environment } from '../../environments/environment';
 import { SessionService } from '../session/session.service';
 
 @Injectable()
-export class EmployeesService {
+export class ProfileService {
   constructor (private http: Http, private sessionService: SessionService) {}
 
   index (companyId) {

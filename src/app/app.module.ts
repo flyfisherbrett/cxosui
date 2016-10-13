@@ -19,6 +19,11 @@ import { CashFlowComponent } from './cash-flow/cash-flow.component';
 import { CashFlowChartComponent } from './cash-flow/cash-flow-chart/cash-flow-chart.component';
 import { LoginComponent } from './login/login.component';
 import { ArApComponent } from './ar-ap/ar-ap.component';
+import { EmployeesComponent } from './employees/employees.component';
+import { BenchmarksComponent } from './benchmarks/benchmarks.component';
+import { BenchmarkComponent } from './benchmarks/benchmark/benchmark.component';
+import { ProfileComponent } from './profile/profile.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -32,7 +37,12 @@ import { ArApComponent } from './ar-ap/ar-ap.component';
     CashFlowComponent,
     CashFlowChartComponent,
     LoginComponent,
-    ArApComponent
+    ArApComponent,
+    EmployeesComponent,
+    BenchmarksComponent,
+    BenchmarkComponent,
+    ProfileComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

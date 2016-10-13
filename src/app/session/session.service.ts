@@ -26,6 +26,8 @@ export class SessionService {
   // must define the interface first to use this type, this was previously set to 'Object'
   // before Company interface was defined;
 
+  apiSession = environment.apiEndpoint + 'api/sessions';
+
   constructor(private http: Http, private router: Router) {
     this.loggedIn.next(false); // when service is instantiated, loggedIn value is false
   }
@@ -33,7 +35,7 @@ export class SessionService {
   login(email, password) {
     let creds = { email: email, password: password };
 
-    this.http.post(environment.apiEndpoint + 'api/sessions', creds)
+    this.http.post(this.apiSession, creds)
       .subscribe(
       res => {
         this.loadSessionData(res.json());
