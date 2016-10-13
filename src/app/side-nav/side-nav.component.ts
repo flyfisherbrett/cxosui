@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { UserService, Company, User } from '../user/user.service';
+import { SessionService, Company, User } from '../session/session.service';
 
 @Component({
   selector: 'app-side-nav',
@@ -14,7 +14,7 @@ export class SideNavComponent {
   @Output() companyChange = new EventEmitter();
   @Output() logout = new EventEmitter();
 
-  constructor(private userService: UserService) {}
+  constructor(private sessionService: SessionService) {}
 
   emitLogout() { this.logout.emit(); }
 

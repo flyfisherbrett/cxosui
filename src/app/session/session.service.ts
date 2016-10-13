@@ -19,7 +19,7 @@ export interface Company {
 } // defining Company interface for Typescript; not required
 
 @Injectable()
-export class UserService {
+export class SessionService {
   loggedIn = new Subject<Boolean>();
   companySwitch = new Subject<Company>(); 
   // anything subscribed will now know the attributes because of the 'Company' type;

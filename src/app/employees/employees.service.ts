@@ -4,14 +4,15 @@ import { environment } from '../../environments/environment';
 import { SessionService } from '../session/session.service';
 
 @Injectable()
-export class DashboardService {
+export class EmployeesService {
   constructor (private http: Http, private sessionService: SessionService) {}
 
-  cashFlow (id) {
+  index (companyId) {
     let headers = new Headers();
     headers.append('Authorization', this.sessionService.headerToken());
-    headers.append('report_type', 'CashFlow');
-    return this.http.get(environment.apiEndpoint + 'api/companies/' + id + '/cash_flow', {headers: headers});
+    return this.http.get(environment.apiEndpoint + 'api/companies/' + companyId + '/employees', {headers: headers});
   }
 
+
+  
 }

@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService, User, Company } from '../session/session.service';
-import { DashboardService } from './dashboard.service';
+import { EmployeesService } from './employees.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
-  providers: [DashboardService] // declared here as it only services this component
+  selector: 'app-employees',
+  templateUrl: './employees.component.html',
+  styleUrls: ['./employees.component.css'],
+  providers: [EmployeesService] // declared here as it only services this component
 })
 export class DashboardComponent implements OnInit {
   user: User;
   company: Company;
   data: any;
 
-    constructor(private sessionService: SessionService, private router: Router, private dashboardService: DashboardService) {
+    constructor(private sessionService: SessionService, private router: Router, private employeesService: EmployeesService) {
       if (!this.sessionService.isLoggedIn()) {
         this.router.navigate(['/']);
       }
@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit {
     }
 
     setData() {
-      this.dashboardService.cashFlow(this.company.id).subscribe(res => {
+      this.employeesService.index(this.company.id).subscribe(res => {
         this.data = res.json().data;
       });
     }

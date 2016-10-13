@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserService, Company, User } from './user/user.service';
+import { SessionService, Company, User } from './session/session.service';
 
 
 @Component({
@@ -15,22 +15,22 @@ export class AppComponent {
   company: Company;
 
 
-  constructor(private userService: UserService) {
-    if (this.userService.isLoggedIn()) {
-      this.user = this.userService.getUser() || {};
-      this.companies = this.userService.getCompanies();
-      this.company = this.userService.getCompany();
+  constructor(private sessionService: SessionService) {
+    if (this.sessionService.isLoggedIn()) {
+      this.user = this.sessionService.getUser() || {};
+      this.companies = this.sessionService.getCompanies();
+      this.company = this.sessionService.getCompany();
     }
 
-    this.userService.companySwitch.subscribe(c => {
+    this.sessionService.companySwitch.subscribe(c => {
       this.company = c;
     });
 
-    this.userService.loggedIn.subscribe( loggedIn => {
+    this.sessionService.loggedIn.subscribe( loggedIn => {
       if (loggedIn) {
-        this.user = this.userService.getUser();
-        this.companies = this.userService.getCompanies();
-        this.company = this.userService.getCompany();
+        this.user = this.sessionService.getUser();
+        this.companies = this.sessionService.getCompanies();
+        this.company = this.sessionService.getCompany();
       } else {
         this.user = null;
         this.companies = [];
@@ -40,12 +40,12 @@ export class AppComponent {
   }
 
   setCompany(id) {
-    this.userService.setCompany(id);
+    this.sessionService.setCompany(id);
   }
 
   toggleSideNav() {
     this.sideNavExpanded = !this.sideNavExpanded;
   }
 
-  logout() { this.userService.logout(); }
+  logout() { this.sessionService.logout(); }
 }

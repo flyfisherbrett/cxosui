@@ -9,7 +9,7 @@ import { ChartModule } from 'angular2-highcharts';
 import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 
-import { UserService } from './user/user.service';
+import { SessionService } from './session/session.service';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
@@ -18,6 +18,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { CashFlowComponent } from './cash-flow/cash-flow.component';
 import { CashFlowChartComponent } from './cash-flow/cash-flow-chart/cash-flow-chart.component';
 import { LoginComponent } from './login/login.component';
+import { ArApComponent } from './ar-ap/ar-ap.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { LoginComponent } from './login/login.component';
     DashboardComponent,
     CashFlowComponent,
     CashFlowChartComponent,
-    LoginComponent
+    LoginComponent,
+    ArApComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,7 @@ import { LoginComponent } from './login/login.component';
     ChartModule,
     routing
   ],
-  providers: [UserService], // declared here to share data between components
+  providers: [SessionService], // declared here to share data between components
   bootstrap: [AppComponent]
 })
 

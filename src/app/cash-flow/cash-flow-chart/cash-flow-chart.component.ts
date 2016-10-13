@@ -17,7 +17,7 @@ export class CashFlowChartComponent implements OnChanges {
     options: {};
 
     ngOnChanges() {
-        if(this.data) { this.drawChart(); }
+        if (this.data) { this.drawChart(); }
     }
 
     drawChart() {

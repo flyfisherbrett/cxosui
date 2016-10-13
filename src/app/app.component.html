@@ -1,7 +1,7 @@
 <app-top-nav (sideNavChange)="toggleSideNav()"></app-top-nav>
 
 <div class="row">
-    <div id="sidebar" class="side-nav fixed">
+    <div id="sidebar" class="side-nav fixed" *ngIf="sideNavExpanded">
         <app-side-nav   [expanded]="sideNavExpanded"
                         [user]="user"
                         [companies]="companies"
@@ -10,11 +10,11 @@
                         (logout)="logout()"></app-side-nav>
     </div>
 
-    <div id="content-window">
+    <div id="content-window" [class.side-nav-present]="sideNavExpanded">
         <router-outlet></router-outlet>
     </div>
 </div>
 
-<div id="footer">
+<div id="footer" [class.side-nav-present]="sideNavExpanded">
     <app-footer></app-footer>
 </div>

@@ -20,3 +20,7 @@
 #links-title {
     font-size: 12px;
 }
+
+.disabled-link {
+    color: blue;
+}
