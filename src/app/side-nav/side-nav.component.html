@@ -9,10 +9,11 @@
 
     <div class="input-field col s12">
         <select materialize="material_select" (change)="changeCompany($event.target.value)">
-        <option *ngFor="let c of companies" 
-                [value]="c.id"
-                [attr.selected]="c.id === company.id ? true : null">{{ c.name }}</option> <!-- must return null in false case for selected to work -->
-    </select>
+            <option *ngFor="let c of companies" 
+                    [value]="c.id"
+                    [attr.selected]="c.id === company.id ? true : null">{{ c.name }}</option> <!-- must return null in false case for selected to work -->
+            <option value="0">Add Company...</option>
+        </select>
         <label>Select Company</label>
     </div>
 
