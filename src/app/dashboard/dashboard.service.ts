@@ -6,7 +6,6 @@ import { ErrorService } from '../error/error.service';
 
 @Injectable()
 export class DashboardService {
-  data: Object;
 
   constructor (private http: Http, private sessionService: SessionService, private errorService: ErrorService) {}
 
@@ -14,11 +13,7 @@ export class DashboardService {
     let headers = new Headers();
     headers.append('Authorization', this.sessionService.headerToken());
     headers.append('report_type', 'CashFlow');
-
     return this.http.get(environment.apiEndpoint + 'api/companies/' + id + '/cash_flow', {headers: headers});
-
   }
-
-  getData() { return this.data; }
 
 }
