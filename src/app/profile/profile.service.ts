@@ -13,4 +13,10 @@ export class ProfileService {
     return this.http.get(environment.apiEndpoint + 'api/companies/' + companyId + '/employees', {headers: headers});
   }
 
+  show(companyId, employeeId) {
+    let headers = new Headers();
+    headers.append('Authorization', this.sessionService.headerToken());
+    return this.http.get(environment.apiEndpoint + 'api/employees/' + employeeId, {headers: headers});
+  }
+
 }

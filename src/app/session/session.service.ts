@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { Subject } from 'rxjs/Subject';
 
-
 export interface User {
   id: number;
   first_name: string;
@@ -56,10 +55,12 @@ export class SessionService {
   }
 
   sameUser(company, companies) {
-    let found = companies.filter(c => {
-      return (c.name === company.name) && (c.employee_id === company.employee_id);
-    });
-    return found.length === 1;
+    if (company && companies) {
+      let found = companies.filter(c => {
+        return (c.name === company.name) && (c.employee_id === company.employee_id);
+      });
+      return found.length === 1;
+    }
   }
 
   changeCompany(company: Company) {

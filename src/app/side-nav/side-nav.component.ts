@@ -31,4 +31,9 @@ export class SideNavComponent {
     };
     return roleMap[role];
   }
+
+  addCompany(e) {
+    e.preventDefault();
+    console.log('add it!');
+  }
 }

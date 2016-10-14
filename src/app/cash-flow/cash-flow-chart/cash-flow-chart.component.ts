@@ -46,6 +46,7 @@ export class CashFlowChartComponent implements OnChanges {
             },
             plotOptions: {
                 area: {
+                    animation: false,
                     color: '#a5d6a7',
                     fillColor: 'rgba(65, 135, 63, 0.25)',
                     marker: {
@@ -90,35 +91,5 @@ export class CashFlowChartComponent implements OnChanges {
             }
             ]
         };
-    }
-
-    getFakeData () {
-        let self = this;
-        $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
-            self.data = data;
-            self.drawFakeChart();
-        });
-    }
-
-    drawFakeChart() {
-        this.options = {
-
-
-            rangeSelector: {
-                selected: 1
-            },
-
-            title: {
-                text: 'AAPL Stock Price'
-            },
-
-            series: [{
-                name: 'AAPL',
-                data: this.data,
-                tooltip: {
-                    valueDecimals: 2
-                }
-            }]
-        }
     }
 }
