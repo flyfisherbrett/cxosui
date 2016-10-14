@@ -25,6 +25,8 @@ import { BenchmarkComponent } from './benchmarks/benchmark/benchmark.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
+// import { EmployeesModule } from './employees/employees.module';
+
 
 @NgModule({
   declarations: [
@@ -38,10 +40,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
     CashFlowChartComponent,
     LoginComponent,
     ArApComponent,
-    EmployeesComponent,
     BenchmarksComponent,
     BenchmarkComponent,
     ProfileComponent,
+    EmployeesComponent,
     NotFoundComponent
   ],
   imports: [

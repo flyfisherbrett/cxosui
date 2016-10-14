@@ -2,10 +2,10 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
-import { EmployeesComponent } from './employees/employees.component';
 import { BenchmarksComponent } from './benchmarks/benchmarks.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { EmployeesComponent } from './employees/employees.component';
 
 
 // import { LoginComponent } from './login/login.component';
