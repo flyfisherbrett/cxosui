@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SessionService, User, Company } from '../session/session.service';
 import { DashboardService } from './dashboard.service';
 import { Router } from '@angular/router';
+import { ErrorService } from '../error/error.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,27 +15,34 @@ export class DashboardComponent implements OnInit {
   company: Company;
   data: any;
 
-    constructor(private sessionService: SessionService, private router: Router, private dashboardService: DashboardService) {
-      if (!this.sessionService.isLoggedIn()) {
-        this.router.navigate(['/']);
-      }
+  constructor(private sessionService: SessionService,
+              private router: Router,
+              private dashboardService: DashboardService,
+              private errorService: ErrorService) {
 
-      this.user = this.sessionService.getUser();
-      this.company = this.sessionService.getCompany();
-
-      this.sessionService.companySwitch.subscribe(c => {
-        this.company = c;
-        this.setData();
-      });
+    if (!this.sessionService.isLoggedIn()) {
+      this.router.navigate(['/']);
     }
 
-    ngOnInit() {
+    this.user = this.sessionService.getUser();
+    this.company = this.sessionService.getCompany();
+
+    this.sessionService.companySwitch.subscribe(c => {
+      this.company = c;
       this.setData();
-    }
+    });
+  }
 
-    setData() {
-      this.dashboardService.cashFlow(this.company.id).subscribe(res => {
+  ngOnInit() {
+    this.setData();
+  }
+
+  setData() {
+    this.dashboardService.cashFlow(this.company.id)
+      .subscribe(res => {
         this.data = res.json().data;
+      }, err => {
+        this.errorService.handle(err);
       });
-    }
+  }
 }

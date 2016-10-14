@@ -21,7 +21,7 @@ export interface Company {
 @Injectable()
 export class SessionService {
   loggedIn = new Subject<Boolean>();
-  companySwitch = new Subject<Company>(); 
+  companySwitch = new Subject<Company>();
   // anything subscribed will now know the attributes because of the 'Company' type;
   // must define the interface first to use this type, this was previously set to 'Object'
   // before Company interface was defined;
@@ -29,7 +29,7 @@ export class SessionService {
   apiSession = environment.apiEndpoint + 'api/sessions';
 
   constructor(private http: Http, private router: Router) {
-    this.loggedIn.next(false); // when service is instantiated, loggedIn value is false
+    this.loggedIn.next(this.isLoggedIn()); // when service is instantiated, loggedIn value is detected
   }
 
   login(email, password) {

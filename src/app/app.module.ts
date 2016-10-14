@@ -24,6 +24,7 @@ import { BenchmarksComponent } from './benchmarks/benchmarks.component';
 import { BenchmarkComponent } from './benchmarks/benchmark/benchmark.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ErrorService } from './error/error.service';
 
 // import { EmployeesModule } from './employees/employees.module';
 
@@ -54,7 +55,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ChartModule,
     routing
   ],
-  providers: [SessionService], // declared here to share data between components
+  providers: [SessionService, ErrorService], // declared here to share data between components
   bootstrap: [AppComponent]
 })
 
