@@ -25,6 +25,7 @@ import { BenchmarkComponent } from './benchmarks/benchmark/benchmark.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ErrorService } from './error/error.service';
+import { SettingsComponent } from './settings/settings.component';
 
 // import { EmployeesModule } from './employees/employees.module';
 
@@ -45,6 +46,7 @@ import { ErrorService } from './error/error.service';
     BenchmarkComponent,
     ProfileComponent,
     EmployeesComponent,
+    SettingsComponent,
     NotFoundComponent
   ],
   imports: [

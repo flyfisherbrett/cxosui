@@ -40,15 +40,11 @@ export class ProfileComponent implements OnInit {
 
     this.sessionService.companySwitch.subscribe(c => {
       this.company = c;
+      this.show();
     });
   }
     ngOnInit() {
-      this.profileService.show(this.company.id, this.company.employee_id).subscribe(res => {
-        console.log(res.json());
-        this.buildProfile(res.json());
-      }, err => {
-        this.errorService.handle(err);
-      });
+      this.show();
     }
 
     buildProfile(data) {
@@ -65,9 +61,16 @@ export class ProfileComponent implements OnInit {
         picture: data.employee.user.attachment_url
       };
     }
-    
+
     showPasswordChange(e) {
-      e.preventDefault()
-      console.log('showin it');
+      e.preventDefault();
+    }
+
+    show() {
+      this.profileService.show(this.company.id, this.company.employee_id).subscribe(res => {
+        this.buildProfile(res.json());
+      }, err => {
+        this.errorService.handle(err);
+      });
     }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SessionService, User, Company } from '../session/session.service';
 import { EmployeesService } from './employees.service';
 import { Router } from '@angular/router';
+import { ErrorService } from '../error/error.service';
 
 interface Employee {
     id: number;
@@ -26,7 +27,10 @@ export class EmployeesComponent implements OnInit {
     company: Company;
     employees: Array<Employee>;
 
-    constructor(private sessionService: SessionService, private router: Router, private employeesService: EmployeesService) {
+    constructor(private sessionService: SessionService,
+                private router: Router,
+                private employeesService: EmployeesService,
+                private errorService: ErrorService) {
         if (!this.sessionService.isLoggedIn()) {
             this.router.navigate(['/']);
         }
@@ -48,6 +52,8 @@ export class EmployeesComponent implements OnInit {
         this.employeesService.index(this.company.id).subscribe(res => {
             this.employees = res.json().company.employees;
             console.log(this.employees);
+        }, err => {
+            this.errorService.handle(err);
         });
     }
 

@@ -6,6 +6,7 @@ import { BenchmarksComponent } from './benchmarks/benchmarks.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { EmployeesComponent } from './employees/employees.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 // import { LoginComponent } from './login/login.component';
@@ -32,6 +33,10 @@ const appRoutes: Routes = [
     {
         path: 'profile',
         component: ProfileComponent
+    },
+    {
+        path: 'settings',
+        component: SettingsComponent
     },
     {
         path: '**',
