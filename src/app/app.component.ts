@@ -53,11 +53,6 @@ export class AppComponent {
     });
   }
 
-  openModal(header, body, buttons) {
-    this.modalService.openModal('one thing',
-                                '<h1>another</h1>', null);
-  }
-
   setCompany(id) {
     this.sessionService.setCompany(id);
   }

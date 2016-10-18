@@ -12,3 +12,7 @@ body {
 .cxo-btn-primary:hover {
     background-color: #3fb992;
 }
+
+.no-margin {
+    margin: 0;
+}

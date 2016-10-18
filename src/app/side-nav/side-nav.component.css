@@ -17,8 +17,13 @@
     margin-right: 10px !important;
 }
 
+.md-14 {
+    font-size: 14px;
+    margin-right: 5px !important;
+}
+
 .seperator {
-    height: 2px;
+    height: 1px;
     background-color: #d1d1d1;
 }
 
@@ -43,10 +48,16 @@
     background: transparent;
 }
 
-.company-picker {
-    height: 66px;
-}
-
 .label-row {
     height: 15px;
+}
+
+.add-company {
+    padding: 10px 30px;
+    font-size: 12px;
+}
+
+.add-company:hover {
+    cursor: pointer;
+    font-weight: bold;
 }

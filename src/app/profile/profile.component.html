@@ -80,7 +80,7 @@
 </div>
 
 <div class="row">
-	
+
 	<div *ngIf="passwordChangeStatus === 'none'" class="col s12 l6 pass-link">
 		<a (click)="passwordChangeStatus = 'show'" class="change-password">change password</a>
 	</div>
@@ -117,7 +117,7 @@
 
 <div class="row">
 	<div class="col s12">
-		<a class="waves-effect waves-light btn cxo-btn-primary">Save Changes</a>
+		<a (click)="saveChanges()" class="waves-effect waves-light btn cxo-btn-primary">Save Changes</a>
 		<a class="waves-effect waves-light btn cxo-btn-primary">Revert Changes</a>
 	</div>
 </div>

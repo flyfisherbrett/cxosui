@@ -19,6 +19,12 @@ export class ProfileService {
     return this.http.get(environment.apiEndpoint + 'api/employees/' + employeeId, { headers: headers });
   }
 
+  updateProfile(employeeId, employeeParams) {
+    let headers = new Headers();
+    headers.append('Authorization', this.sessionService.headerToken());
+    return this.http.put(environment.apiEndpoint + 'api/employees/' + employeeId, employeeParams, { headers: headers });
+  }
+
   profilePicture(userId, file) {
     return new Promise((resolve, reject) => {
       let xhr: XMLHttpRequest = new XMLHttpRequest();

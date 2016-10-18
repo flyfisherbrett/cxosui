@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  apiEndpoint: 'https://www.cxo-api.com/'
+  apiEndpoint: 'http://localhost:3000/'
+  // apiEndpoint: 'https://www.cxo-api.com/'
 };

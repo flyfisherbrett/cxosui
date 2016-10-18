@@ -15,6 +15,7 @@ import { User } from '../user';
 export class ProfileComponent implements OnInit {
   user: User;
   company: Company;
+  employee: any;
   data: any;
   uploadStatus = 'none';
   passwordChangeStatus = 'none';
@@ -52,6 +53,7 @@ export class ProfileComponent implements OnInit {
     }
 
     buildProfile(data) {
+      this.employee = data.employee;
       let user = data.employee.user;
       this.profile = {
         first_name: user.first_name,
@@ -89,4 +91,34 @@ export class ProfileComponent implements OnInit {
         this.uploadStatus = 'none';
       });
     }
+
+    saveChanges() {
+      this.profileService.updateProfile(this.employee.id, this.parseEmployeeForUpdate())
+        .subscribe(res => {
+          console.log(res.json());
+        }, err => {
+          console.log(err);
+        });
+    }
+
+    updateEmployeeModel() {
+      let user = this.employee.user;
+      user.first_name = this.profile.first_name;
+      user.last_name = this.profile.last_name;
+      user.email = this.profile.primary_email;
+      user.secondary_email = this.profile.secondary_email;
+      user.attachment_url = this.profile.picture;
+      this.employee.title = this.profile.title;
+      // will need more when other attributes are available
+    }
+
+    parseEmployeeForUpdate() {
+      return {
+        user: this.employee.user,
+        title: this.employee.title
+      };
+      // will also need more attributes in future
+    }
+
+    revertChanges() {}
 }
