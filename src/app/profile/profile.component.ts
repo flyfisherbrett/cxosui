@@ -93,6 +93,7 @@ export class ProfileComponent implements OnInit {
     }
 
     saveChanges() {
+      this.updateEmployeeModel();
       this.profileService.updateProfile(this.employee.id, this.parseEmployeeForUpdate())
         .subscribe(res => {
           console.log(res.json());
