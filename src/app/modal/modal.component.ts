@@ -17,7 +17,16 @@ declare var $;
 	    </div>
     </div>
   `,
-  styles: [``]
+  styles: [`
+    a {
+        color: #1e7da9;
+    }
+    
+    a:hover {
+        color: #075488;
+        font-weight: bold;
+    }
+  `]
 })
 export class ModalComponent {
     @Input() open: boolean;

@@ -16,3 +16,13 @@ nav {
 .logout-btn {
     color: black;
 }
+
+ul a {
+    height: 88px;
+    color: #259f78;
+}
+
+ul a:hover {
+    color: #075488;
+    font-weight: bold;
+}

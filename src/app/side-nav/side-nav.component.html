@@ -1,37 +1,35 @@
 <div *ngIf="user" class="side-display">
-    <div class="user-panel valign-wrapper">
-        <div *ngIf="user" class="valign">
-            <h5>{{ user.first_name }} {{ user.last_name }}</h5>
-            <span>{{ renameRole(company.role) | uppercase }}</span>
-            <a class="edit-profile" routerLink="/profile">edit profile</a>
-        </div>
-    </div>
+	<div class="user-panel valign-wrapper">
+		<div *ngIf="user" class="valign">
+			<h5>{{ user.first_name }} {{ user.last_name }}</h5>
+			<span>{{ renameRole(company.role) | uppercase }}</span>
+			<a class="edit-profile" routerLink="/profile">edit profile</a>
+		</div>
+	</div>
 
-    <div class="input-field col s12 company-picker">
-        <select materialize="material_select" (change)="changeCompany($event.target.value)">
+	<div class="input-field col s12 company-picker">
+		<select materialize="material_select" (change)="changeCompany($event.target.value)">
             <option *ngFor="let c of companies" 
                     [value]="c.id"
                     [attr.selected]="c.id === company.id ? true : null">{{ c.name }}</option> <!-- must return null in false case for selected to work -->
-            <option (click)="addCompany($event)" value="0">Add Company...</option>
         </select>
-        <label>Select Company</label>
-    </div>
+		<label>Select Company</label>
+	</div>
 
-    <div class="seperator"></div>
 
-    <div class="nav-links">
-        <span id="links-title">MAIN LINKS</span>
 
-        <ul>
-            <li><a routerLink="/cash_flow"><i class="material-icons md-18">trending_up</i>Cash Flow</a></li>
-            <li><a routerLink="/benchmarks"><i class="material-icons md-18">insert_chart</i>Benchmarks</a></li>
-            <li><a routerLink="/employees"><i class="material-icons md-18">people</i>Employees</a></li>
-            <li><a routerLink="/settings"><i class="material-icons md-18">settings</i>Settings</a></li>
-        </ul>
-    </div>
+	<div class="nav-links">
+		<span id="links-title">MAIN LINKS</span>
+		<ul>
+			<li><a routerLink="/cash_flow"><i class="material-icons md-18">trending_up</i>Cash Flow</a></li>
+			<li><a routerLink="/benchmarks"><i class="material-icons md-18">insert_chart</i>Benchmarks</a></li>
+			<li><a routerLink="/employees"><i class="material-icons md-18">people</i>Employees</a></li>
+			<li><a routerLink="/settings"><i class="material-icons md-18">settings</i>Settings</a></li>
+		</ul>
+	</div>
 </div>
 
 <div *ngIf="!user" class="side-display">
-    <div class="user-panel valign-wrapper">
-    </div>
+	<div class="user-panel valign-wrapper">
+	</div>
 </div>

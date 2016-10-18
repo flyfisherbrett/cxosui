@@ -1,8 +1,16 @@
 .code-list {
-    max-height: 235px;
+    height: 235px;
     overflow: scroll;
 }
 
 .naics-code:hover {
     cursor: pointer;
+}
+
+.industry-codes {
+    height: 500px;
+}
+
+.code-search {
+    margin-top: 30px;
 }
