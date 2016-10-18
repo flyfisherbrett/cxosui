@@ -16,6 +16,8 @@ export class ProfileComponent implements OnInit {
   user: User;
   company: Company;
   data: any;
+  uploadStatus = 'none';
+  passwordChangeStatus = 'none';
   profile = {
     first_name: '',
     last_name: '',
@@ -26,7 +28,7 @@ export class ProfileComponent implements OnInit {
     pay_type: '',
     classification: '',
     picture: ''
-  }
+  };
 
   constructor(private sessionService: SessionService,
               private router: Router,
@@ -73,6 +75,18 @@ export class ProfileComponent implements OnInit {
         this.buildProfile(res.json());
       }, err => {
         this.errorService.handle(err);
+      });
+    }
+
+    uploadPicture(e) {
+      let file = e.srcElement.files[0];
+      this.uploadStatus = 'uploading';
+      this.profileService.profilePicture(this.user.id, file).then(res => {
+        this.profile.picture = res['url'];
+        this.uploadStatus = 'none';
+      }, err => {
+        this.errorService.handle(err);
+        this.uploadStatus = 'none';
       });
     }
 }

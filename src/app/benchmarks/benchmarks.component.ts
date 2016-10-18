@@ -37,7 +37,6 @@ export class BenchmarksComponent implements OnInit {
   ngOnInit() {
     this.benchmarksService.companyShow(this.company.id).subscribe(res => {
       this.extendedCompany = res.json().company;
-      console.log(this.extendedCompany);
       this.getIndustryData();
 
     }, err => {
@@ -68,15 +67,9 @@ export class BenchmarksComponent implements OnInit {
   }
 
   getIndustryData() {
-    console.log(this.extendedCompany['naics_code']);
     this.benchmarksService.benchmarkData(this.extendedCompany['naics_code']).subscribe(res => {
       if (res.json().error === 'cannot find industry data') {
-        this.modalService.openModal(
-          'No Industry Data',
-          `<p>Could not find Industry data for this company. 
-          Make sure the NAICS code is set for this company on the <a href="/settings">settings</a> page.</p>`,
-          null);
-        console.log(res.json());
+        this.noDataWarning();
       } else {
         console.log(this.extendedCompany['naics_code']);
         console.log(res.json());
@@ -90,4 +83,11 @@ export class BenchmarksComponent implements OnInit {
     if (this.company.role !== 'admin') { this.router.navigate(['/profile']); }
   }
 
+  noDataWarning() {
+    this.modalService.openModal(
+      'No Industry Data',
+      `<p>Could not find Industry data for this company. 
+      Make sure the NAICS code is set for this company on the <a href="/settings">settings</a> page.</p>`,
+      null);
+  }
 }

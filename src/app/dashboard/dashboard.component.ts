@@ -45,7 +45,6 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.cashFlow(this.company.id)
       .subscribe(res => {
         this.data = res.json().data;
-        console.log(this.data);
       }, err => {
         this.errorService.handle(err);
       });

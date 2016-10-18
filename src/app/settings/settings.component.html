@@ -6,8 +6,8 @@
 	<div class="card-content">
 		<span class="card-title">Industry Code - NAICS</span>
 		<div class="input-field form-group">
-			<input class="form-control" type="text" id="naics" required [(ngModel)]="extendedCompany.naics_code">
 			<label for="naics" [class.active]="extendedCompany.naics_code">NAICS Code</label>
+			<input class="form-control" type="text" id="naics" required [(ngModel)]="extendedCompany.naics_code">
 		</div>
 
 		<div class="code-list">
@@ -19,8 +19,8 @@
 		</div>
 
 		<div class="input-field code-search">
-			<input id="search" type="text" (keyup)="filterCodes()" [(ngModel)]="searchText">
 			<label for="search"><i class="material-icons">search</i></label>
+			<input id="search" type="text" (keyup)="filterCodes()" [(ngModel)]="searchText">
 		</div>
 	</div>
 </div>

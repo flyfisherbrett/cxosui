@@ -5,18 +5,39 @@ import { SessionService } from '../session/session.service';
 
 @Injectable()
 export class ProfileService {
-  constructor (private http: Http, private sessionService: SessionService) {}
+  constructor(private http: Http, private sessionService: SessionService) { }
 
-  index (companyId) {
+  index(companyId) {
     let headers = new Headers();
     headers.append('Authorization', this.sessionService.headerToken());
-    return this.http.get(environment.apiEndpoint + 'api/companies/' + companyId + '/employees', {headers: headers});
+    return this.http.get(environment.apiEndpoint + 'api/companies/' + companyId + '/employees', { headers: headers });
   }
 
   show(companyId, employeeId) {
     let headers = new Headers();
     headers.append('Authorization', this.sessionService.headerToken());
-    return this.http.get(environment.apiEndpoint + 'api/employees/' + employeeId, {headers: headers});
+    return this.http.get(environment.apiEndpoint + 'api/employees/' + employeeId, { headers: headers });
+  }
+
+  profilePicture(userId, file) {
+    return new Promise((resolve, reject) => {
+      let xhr: XMLHttpRequest = new XMLHttpRequest();
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            resolve(JSON.parse(xhr.response));
+          } else {
+            reject(xhr.response);
+          }
+        }
+      };
+      xhr.open('POST', environment.apiEndpoint + 'api/users/' + userId + '/attachables', true);
+      xhr.setRequestHeader('Authorization', this.sessionService.headerToken());
+
+      let formData = new FormData();
+      formData.append('file', file, file.name);
+      xhr.send(formData);
+    });
   }
 
 }

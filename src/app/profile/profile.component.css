@@ -7,10 +7,18 @@
     color: #1e7da9;
 }
 
+.pass-link:hover {
+    cursor: pointer;
+}
+
 .profile-card {
     min-height: 300px;
 }
 
 .employee-traits {
     margin-top: 15px;
+}
+
+.password-submit {
+    margin: 15px 0px;
 }

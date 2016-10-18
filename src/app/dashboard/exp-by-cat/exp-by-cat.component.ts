@@ -42,7 +42,6 @@ export class ExpByCatComponent implements OnChanges {
         //     });
         // });
         // this.options =
-        console.log($('.ebc-chart'));
         $('#ebc-chart').highcharts({
             colorAxis: {
                 minColor: '#FFFFFF',

@@ -7,25 +7,37 @@
 		</div>
 	</div>
 
-	<div class="input-field col s12 company-picker">
-		<select materialize="material_select" (change)="changeCompany($event.target.value)">
-            <option *ngFor="let c of companies" 
-                    [value]="c.id"
-                    [attr.selected]="c.id === company.id ? true : null">{{ c.name }}</option> <!-- must return null in false case for selected to work -->
-        </select>
-		<label>Select Company</label>
+	<div class="input-field company-picker">
+		<div class="row label-row">
+			<div class="col s12">
+				<label>Select Company</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12">
+				<select materialize="material_select" class="browser-default" (change)="changeCompany($event.target.value)">
+            		<option *ngFor="let c of companies" 
+                    		[value]="c.id"
+                    		[attr.selected]="c.id === company.id ? true : null">
+							{{ c.name }}
+					</option> <!-- must return null in false case for selected to work -->
+				</select>
+			</div>
+		</div>
+
 	</div>
 
 
 
-	<div class="nav-links">
-		<span id="links-title">MAIN LINKS</span>
-		<ul>
-			<li><a routerLink="/cash_flow"><i class="material-icons md-18">trending_up</i>Cash Flow</a></li>
-			<li><a routerLink="/benchmarks"><i class="material-icons md-18">insert_chart</i>Benchmarks</a></li>
-			<li><a routerLink="/employees"><i class="material-icons md-18">people</i>Employees</a></li>
-			<li><a routerLink="/settings"><i class="material-icons md-18">settings</i>Settings</a></li>
-		</ul>
+	<div class="nav-links row">
+
+			<ul>
+				<li><a routerLink="/cash_flow"><i class="material-icons md-18">trending_up</i>Cash Flow</a></li>
+				<li><a routerLink="/benchmarks"><i class="material-icons md-18">insert_chart</i>Benchmarks</a></li>
+				<li><a routerLink="/employees"><i class="material-icons md-18">people</i>Employees</a></li>
+				<li><a routerLink="/settings"><i class="material-icons md-18">settings</i>Settings</a></li>
+			</ul>
+
 	</div>
 </div>
 
