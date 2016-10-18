@@ -10,7 +10,7 @@ export class SettingsService {
   show(companyId) {
     let headers = new Headers();
     headers.append('Authorization', this.sessionService.headerToken());
-    return this.http.get(environment.apiEndpoint + 'api/companies/' + companyId);
+    return this.http.get(environment.apiEndpoint + 'api/companies/' + companyId, {headers: headers});
   }
 
 }

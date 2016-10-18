@@ -4,15 +4,21 @@
 
 <div class="col s12 m6">
 	<div class="input-field form-group">
-		<input class="form-control" type="text" id="naics" required [(ngModel)]="company.naics">
-		<label for="naics" [class.active]="">NAICS Code</label>
+		<input class="form-control" type="text" id="naics" required [(ngModel)]="extendedCompany.naics_code">
+		<label for="naics" [class.active]="extendedCompany.naics_code">NAICS Code</label>
 	</div>
 </div>
 
-<div class="col s12 m6 code-list">
-	<ul>
-		<li *ngFor="let code of codes">
-			<p>text</p>
-		</li>
-	</ul>
+<div class="col s12 m6 code-search-box">
+	<div class="input-field">
+		<input id="search" type="text" (keyup)="filterCodes()" [(ngModel)]="searchText">
+		<label for="search"><i class="material-icons">search</i></label>
+	</div>
+	<div class="code-list">
+	<table class="striped">
+		<tr *ngFor="let code of filteredCodes">
+			<td class="naics-code" (click)="setCode(code.code)">{{ code.text }}</td>
+		</tr>
+	</table>
+	</div>
 </div>

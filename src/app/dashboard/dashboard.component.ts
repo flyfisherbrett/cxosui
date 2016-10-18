@@ -18,9 +18,9 @@ export class DashboardComponent implements OnInit {
   data: any;
 
   constructor(private sessionService: SessionService,
-              private router: Router,
-              private dashboardService: DashboardService,
-              private errorService: ErrorService) {
+    private router: Router,
+    private dashboardService: DashboardService,
+    private errorService: ErrorService) {
 
     if (!this.sessionService.isLoggedIn()) {
       this.router.navigate(['/']);
@@ -28,18 +28,20 @@ export class DashboardComponent implements OnInit {
 
     this.user = this.sessionService.getUser();
     this.company = this.sessionService.getCompany();
+    this.checkUserRole();
 
     this.sessionService.companySwitch.subscribe(c => {
       this.company = c;
-      this.setData();
+      this.checkUserRole();
+      this.getCashFlowData();
     });
   }
 
   ngOnInit() {
-    this.setData();
+    this.getCashFlowData();
   }
 
-  setData() {
+  getCashFlowData() {
     this.dashboardService.cashFlow(this.company.id)
       .subscribe(res => {
         this.data = res.json().data;
@@ -47,5 +49,9 @@ export class DashboardComponent implements OnInit {
       }, err => {
         this.errorService.handle(err);
       });
+  }
+
+  checkUserRole() {
+    if (this.company.role !== 'admin') { this.router.navigate(['/profile']); }
   }
 }

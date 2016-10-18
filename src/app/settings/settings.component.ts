@@ -15,12 +15,15 @@ import { User } from '../user';
 export class SettingsComponent implements OnInit {
   user: User;
   company: Company;
-  codes = [1,2];
+  codes = [];
+  filteredCodes = [];
+  extendedCompany = {};
+  searchText = '';
 
   constructor(private sessionService: SessionService,
-              private router: Router,
-              private settingsService: SettingsService,
-              private errorService: ErrorService) {
+    private router: Router,
+    private settingsService: SettingsService,
+    private errorService: ErrorService) {
 
     if (!this.sessionService.isLoggedIn()) {
       this.router.navigate(['/']);
@@ -28,21 +31,47 @@ export class SettingsComponent implements OnInit {
 
     this.user = this.sessionService.getUser();
     this.company = this.sessionService.getCompany();
+    this.checkUserRole();
 
     this.sessionService.companySwitch.subscribe(c => {
       this.company = c;
       this.show();
+      this.checkUserRole();
     });
   }
-    ngOnInit() {
-      this.show();
-    }
+  ngOnInit() {
+    this.show();
+  }
 
-    show() {
-      this.settingsService.show(this.company.id).subscribe(res => {
-        console.log(res.json());
-      }, err => {
-        this.errorService.handle(err);
+  show() {
+    this.settingsService.show(this.company.id).subscribe(res => {
+      this.extendedCompany = res.json().company;
+      let unparsedCodes = res.json().fields[0].options;
+      this.codes = unparsedCodes.map(code => {
+        return {
+          text: code,
+          code: parseInt(code.split(':').pop(), 10)
+        };
+      });
+      this.filteredCodes = this.codes;
+    }, err => {
+      this.errorService.handle(err);
+    });
+  }
+
+  setCode(code) {
+    this.extendedCompany['naics_code'] = code;
+  }
+
+  filterCodes() {
+    if (this.searchText) {
+      this.filteredCodes = this.codes.filter(code => {
+        return code.text.toLowerCase().indexOf(this.searchText.toLowerCase()) !== -1;
       });
     }
+  }
+
+  checkUserRole() {
+    if (this.company.role !== 'admin') { this.router.navigate(['/profile']); }
+  }
 }

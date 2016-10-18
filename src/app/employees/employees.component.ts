@@ -28,6 +28,8 @@ export class EmployeesComponent implements OnInit {
     user: User;
     company: Company;
     employees: Array<Employee>;
+    formerEmployees: Array<Employee>;
+    selectedEmployees: Array<Employee>;
 
     constructor(private sessionService: SessionService,
                 private router: Router,
@@ -39,11 +41,11 @@ export class EmployeesComponent implements OnInit {
 
         this.user = this.sessionService.getUser();
         this.company = this.sessionService.getCompany();
-        this.checkUser();
+        this.checkUserRole();
 
         this.sessionService.companySwitch.subscribe(c => {
             this.company = c;
-            this.checkUser();
+            this.checkUserRole();
             this.index();
         });
     }
@@ -55,14 +57,19 @@ export class EmployeesComponent implements OnInit {
     index() {
         this.employeesService.index(this.company.id).subscribe(res => {
             this.employees = res.json().company.employees;
-            console.log(this.employees);
+            this.formerEmployees = res.json().company.former_employees;
+            this.selectedEmployees = this.employees;
         }, err => {
             this.errorService.handle(err);
         });
     }
 
-    checkUser() {
+    checkUserRole() {
         if (this.company.role !== 'admin') { this.router.navigate(['/profile']); }
+    }
+
+    currentEmployees(boo) {
+        if (boo) { this.selectedEmployees = this.employees; } else { this.selectedEmployees = this.formerEmployees; }
     }
 
 }

@@ -7,7 +7,7 @@
         </div>
     </div>
 
-    <div class="input-field col s12">
+    <div class="input-field col s12 company-picker">
         <select materialize="material_select" (change)="changeCompany($event.target.value)">
             <option *ngFor="let c of companies" 
                     [value]="c.id"
@@ -16,6 +16,8 @@
         </select>
         <label>Select Company</label>
     </div>
+
+    <div class="seperator"></div>
 
     <div class="nav-links">
         <span id="links-title">MAIN LINKS</span>

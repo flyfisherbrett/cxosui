@@ -5,8 +5,12 @@
         </div>
         <div class="employee-header">
             <form action="#" class="status-buttons space-left">
-                <input id="current" class="with-gap" name="status-group" type="radio" checked><label for="current">Current</label>
-                <input id="former" class="with-gap" name="status-group" type="radio"><label for="former">Former</label>
+                <input  id="current" class="with-gap" 
+                        name="status-group" type="radio" 
+                        (click)="currentEmployees(true)" checked><label for="current">Current</label>
+                <input  id="former" class="with-gap" 
+                        name="status-group" type="radio" 
+                        (click)="currentEmployees(false)"><label for="former">Former</label>
             </form>
         </div>
         <div class="employee-header space-left">
@@ -23,13 +27,13 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Email</th>
-                    <th>Manager</th>
+                    <!--<th>Manager</th>-->
                     <th>Role</th>
-                    <th>Activated</th>
+                    <!--<th>Activated</th>-->
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let employee of employees">
+                <tr *ngFor="let employee of selectedEmployees">
                     <td>{{ employee.first_name }}</td>
                     <td>{{ employee.last_name }}</td>
                     <td>{{ employee.email }}</td>
@@ -47,9 +51,9 @@
                     </td>  
                     ^^ left here for when we reintroduce timesheets -->
 
-                    <td>{{ employee.manager }}</td>
+                    <!--<td>{{ employee.manager }}</td>-->
                     <td>{{ employee.role }}</td>
-                    <td>{{ !employee.pending_invitation }}</td>
+                    <!--<td>{{ !employee.pending_invitation }}</td>-->
                 </tr>
             </tbody>
         </table>

@@ -33,7 +33,7 @@ export class CashFlowChartComponent implements OnChanges {
                 plotBands: [{
                     from: this.data.total.data[1][0],
                     to: this.data.total.data[this.data.total.data.length - 1][0],
-                    color: 'rgba(68, 170, 213, .15)'
+                    color: 'rgba(30, 125, 169, 0.15)'
                 }],
                 ordinal: false
             },
@@ -48,7 +48,7 @@ export class CashFlowChartComponent implements OnChanges {
                 area: {
                     animation: false,
                     color: '#a5d6a7',
-                    fillColor: 'rgba(65, 135, 63, 0.25)',
+                    fillColor: 'rgba(37, 159, 120, 0.25)',
                     marker: {
                         radius: 2
                     },

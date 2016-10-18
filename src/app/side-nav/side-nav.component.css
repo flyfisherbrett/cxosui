@@ -17,8 +17,9 @@
     margin-right: 10px !important;
 }
 
-#links-title {
-    font-size: 12px;
+.sepeartor {
+    height: 2px;
+    background-color: #d1d1d1;
 }
 
 .disabled-link {
@@ -34,4 +35,8 @@
     line-height: 30px;
     height: 30px;
     color: #1e7da9 !important;
+}
+
+.company-picker {
+    height: 66px;
 }

@@ -1,0 +1,8 @@
+.code-list {
+    max-height: 235px;
+    overflow: scroll;
+}
+
+.naics-code:hover {
+    cursor: pointer;
+}

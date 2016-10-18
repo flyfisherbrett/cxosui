@@ -6,3 +6,11 @@
 .change-password {
     color: #1e7da9;
 }
+
+.profile-card {
+    min-height: 300px;
+}
+
+.employee-traits {
+    margin-top: 15px;
+}

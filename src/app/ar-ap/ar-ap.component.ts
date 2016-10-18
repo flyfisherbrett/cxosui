@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-ar-ap',
@@ -6,7 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./ar-ap.component.css']
 })
 export class ArApComponent {
-    constructor() {
-        
-    }
+  @Input() data: any;
+
+  constructor() {
+
+  }
+
 }
