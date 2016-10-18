@@ -23,7 +23,7 @@ export class CashFlowChartComponent implements OnChanges {
     drawChart() {
         this.data.total.data.unshift(this.data.actual[this.data.actual.length - 1]);
 
-        this.options = {
+        $('.cash-flow-chart').highcharts('StockChart', {
             yAxis: {
                 title: 'Cash',
                 startOnTick: false
@@ -90,6 +90,6 @@ export class CashFlowChartComponent implements OnChanges {
                 }, [])
             }
             ]
-        };
+        });
     }
 }

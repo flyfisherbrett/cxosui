@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SessionService } from '../session/session.service';
 import { Router } from '@angular/router';
+declare var $;
 
 @Component({
   selector: 'app-login',

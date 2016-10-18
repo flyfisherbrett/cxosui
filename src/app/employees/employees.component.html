@@ -4,13 +4,13 @@
             <h4>Employees</h4>
         </div>
         <div class="employee-header">
-            <form action="#" class="status-buttons">
+            <form action="#" class="status-buttons space-left">
                 <input id="current" class="with-gap" name="status-group" type="radio" checked><label for="current">Current</label>
                 <input id="former" class="with-gap" name="status-group" type="radio"><label for="former">Former</label>
             </form>
         </div>
-        <div class="employee-header">
-            <a href="" class="btn">Sync with Quickbooks</a>
+        <div class="employee-header space-left">
+            <a href="" class="btn">Add a User</a>
         </div>
     </div>
 </div>
@@ -33,6 +33,8 @@
                     <td>{{ employee.first_name }}</td>
                     <td>{{ employee.last_name }}</td>
                     <td>{{ employee.email }}</td>
+                    
+                    <!--
                     <td>
                         <select materialize="material_select">
                         <option *ngFor="let manager of employee.managers" 
@@ -42,7 +44,10 @@
                         </option>
                         <option value="null">NONE</option>
                     </select>
-                    </td>
+                    </td>  
+                    ^^ left here for when we reintroduce timesheets -->
+
+                    <td>{{ employee.manager }}</td>
                     <td>{{ employee.role }}</td>
                     <td>{{ !employee.pending_invitation }}</td>
                 </tr>

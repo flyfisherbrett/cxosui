@@ -1,20 +1,17 @@
-<app-top-nav (sideNavChange)="toggleSideNav()"></app-top-nav>
+<app-top-nav (sideNavChange)="toggleSideNav()" (logout)="logout()" [loggedIn]="loggedIn"></app-top-nav>
 
 <div class="row">
-    <div id="sidebar" class="side-nav fixed" *ngIf="sideNavExpanded">
-        <app-side-nav   [expanded]="sideNavExpanded"
-                        [user]="user"
-                        [companies]="companies"
-                        [company]="company"
-                        (companyChange)="setCompany($event)"
-                        (logout)="logout()"></app-side-nav>
-    </div>
+	<div id="sidebar" class="side-nav fixed" *ngIf="sideNavExpanded">
+		<app-side-nav [expanded]="sideNavExpanded" [user]="user" [companies]="companies" [company]="company" (companyChange)="setCompany($event)"></app-side-nav>
+	</div>
 
-    <div id="content-window" [class.side-nav-present]="sideNavExpanded">
-        <router-outlet></router-outlet>
-    </div>
+	<div id="content-window" [class.side-nav-present]="sideNavExpanded">
+		<router-outlet></router-outlet>
+	</div>
 </div>
 
-<div id="footer" [class.side-nav-present]="sideNavExpanded">
-    <app-footer [sideNavExpanded]="sideNavExpanded"></app-footer>
+<div id="footer" [class.side-nav-present]="sideNavExpanded" (click)="openModal()">
+	<app-footer [sideNavExpanded]="sideNavExpanded"></app-footer>
 </div>
+
+<app-modal [modalHeader]="modalHeader" [modalBody]="modalBody"></app-modal>

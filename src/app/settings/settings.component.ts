@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { SessionService, User, Company } from '../session/session.service';
+import { SessionService } from '../session/session.service';
 import { SettingsService } from './settings.service';
 import { ErrorService } from '../error/error.service';
 import { Router } from '@angular/router';
+import { Company } from '../company';
+import { User } from '../user';
 
 @Component({
   selector: 'app-settings',
@@ -13,7 +15,7 @@ import { Router } from '@angular/router';
 export class SettingsComponent implements OnInit {
   user: User;
   company: Company;
-  data: any;
+  codes = [1,2];
 
   constructor(private sessionService: SessionService,
               private router: Router,
@@ -37,5 +39,10 @@ export class SettingsComponent implements OnInit {
     }
 
     show() {
+      this.settingsService.show(this.company.id).subscribe(res => {
+        console.log(res.json());
+      }, err => {
+        this.errorService.handle(err);
+      });
     }
 }

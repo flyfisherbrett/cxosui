@@ -1,9 +1,15 @@
 <div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper">
+            
             <a href="#" class="brand-logo" (click)="toggleSideNav($event)">
                 <img id="brand-img" src="assets/CXO_logo.jpg" alt="CXO logo">
             </a>
+            
+            <ul *ngIf="loggedIn" class="right">
+                <li><a class="logout-btn" (click)="emitLogout($event)">Logout</a></li>
+            </ul>
+
         </div>
     </nav>
 </div>

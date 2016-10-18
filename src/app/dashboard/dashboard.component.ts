@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { SessionService, User, Company } from '../session/session.service';
+import { SessionService } from '../session/session.service';
 import { DashboardService } from './dashboard.service';
 import { Router } from '@angular/router';
 import { ErrorService } from '../error/error.service';
+import { Company } from '../company';
+import { User } from '../user';
 
 @Component({
   selector: 'app-dashboard',

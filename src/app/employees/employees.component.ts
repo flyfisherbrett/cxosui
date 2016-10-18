@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { SessionService, User, Company } from '../session/session.service';
+import { SessionService } from '../session/session.service';
 import { EmployeesService } from './employees.service';
 import { Router } from '@angular/router';
 import { ErrorService } from '../error/error.service';
+import { Company } from '../company';
+import { User } from '../user';
 
 interface Employee {
     id: number;
@@ -37,9 +39,11 @@ export class EmployeesComponent implements OnInit {
 
         this.user = this.sessionService.getUser();
         this.company = this.sessionService.getCompany();
+        this.checkUser();
 
         this.sessionService.companySwitch.subscribe(c => {
             this.company = c;
+            this.checkUser();
             this.index();
         });
     }
@@ -55,6 +59,10 @@ export class EmployeesComponent implements OnInit {
         }, err => {
             this.errorService.handle(err);
         });
+    }
+
+    checkUser() {
+        if (this.company.role !== 'admin') { this.router.navigate(['/profile']); }
     }
 
 }

@@ -7,11 +7,10 @@ import { SessionService } from '../session/session.service';
 export class SettingsService {
   constructor (private http: Http, private sessionService: SessionService) {}
 
-  show(companyId, employeeId) {
+  show(companyId) {
     let headers = new Headers();
     headers.append('Authorization', this.sessionService.headerToken());
-    return // settings shit
-
+    return this.http.get(environment.apiEndpoint + 'api/companies/' + companyId);
   }
 
 }

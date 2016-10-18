@@ -1,7 +1,18 @@
 <div class="col s12">
-	<div class="card">
-		<div class="card-content">
-			<h3>Here be settings</h3>
-		</div>
+	<h5>Settings for {{ company.name }}</h5>
+</div>
+
+<div class="col s12 m6">
+	<div class="input-field form-group">
+		<input class="form-control" type="text" id="naics" required [(ngModel)]="company.naics">
+		<label for="naics" [class.active]="">NAICS Code</label>
 	</div>
+</div>
+
+<div class="col s12 m6 code-list">
+	<ul>
+		<li *ngFor="let code of codes">
+			<p>text</p>
+		</li>
+	</ul>
 </div>

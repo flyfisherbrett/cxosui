@@ -1,31 +1,42 @@
 <div id="login" class="container">
-  <div class="col s12">
-    <div class="card">
-      <form (submit)="login($event, email.value, password.value)">
-      <div class="card-content">
-        <div class="card-title">
-          <span class="card-title">Please Enter Your Email and Password</span>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <input #email id="email" type="email" class="validate">
-            <label for="email">Email</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <input #password id="password" type="password" class="validate">
-            <label for="password">Password</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col s12">
-            <button type="submit" class="waves-effect waves-light btn right grey login-btn">Quickbooks Login</button>
-            <button type="submit" class="waves-effect waves-light btn right grey login-btn">login</button>
-          </div>
-        </div>
-      </div>
-      </form>
-    </div>
-  </div>
+	<div class="col s12">
+		<div class="card">
+			<form (submit)="login($event, email.value, password.value)">
+				<div class="card-content">
+					<div class="card-title">
+						<span class="card-title">Please Enter Your Email and Password</span>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input #email id="email" type="email" class="validate">
+							<label for="email">Email</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input #password id="password" type="password" class="validate">
+							<label for="password">Password</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s12">
+							<button type="submit" class="waves-effect waves-light btn right grey login-btn">Quickbooks Login</button>
+							<button type="submit" class="waves-effect waves-light btn right grey login-btn">login</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="modal" id="modal1">
+	<div class="modal-content">
+    <span class="right"><i class="material-icons md-18 modal-close">close</i></span>
+		<h4>modal header</h4>
+		<p>some text</p>
+	</div>
+	<div class="modal-footer">
+		<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+	</div>
 </div>

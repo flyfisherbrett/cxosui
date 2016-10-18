@@ -6,8 +6,18 @@
     border-top: 1px solid #dadada; 
     background-color: #FFF;
     padding: 15px;
+    z-index: 2;
 }
 
 .side-nav-contracted {
     width: 100% !important;
+}
+
+.seperate {
+    border-right: solid 1px black;
+}
+
+.footer-link {
+    color: #424242;
+    padding: 0px 15px 0px 15px;
 }

@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { SessionService, Company, User } from './session/session.service';
+import { SessionService } from './session/session.service';
 import { Router } from '@angular/router';
-
+import { Company } from './company';
+import { User } from './user';
+import { ModalService } from './modal/modal.service';
+declare var $;
 
 @Component({
   selector: 'app-root',
@@ -14,13 +17,15 @@ export class AppComponent {
   user: User;
   companies: Array<Company>;
   company: Company;
+  loggedIn: boolean;
 
 
-  constructor(private sessionService: SessionService, private router: Router) {
+  constructor(private sessionService: SessionService, private router: Router, private modalService: ModalService) {
     if (this.sessionService.isLoggedIn()) {
       this.user = this.sessionService.getUser() || {};
       this.companies = this.sessionService.getCompanies();
       this.company = this.sessionService.getCompany();
+      this.loggedIn = true;
     }
 
     this.router.events.subscribe(event => {
@@ -37,13 +42,20 @@ export class AppComponent {
         this.user = this.sessionService.getUser();
         this.companies = this.sessionService.getCompanies();
         this.company = this.sessionService.getCompany();
+        this.loggedIn = true;
       } else {
         this.user = null;
         this.companies = [];
         this.company = null;
         this.sideNavExpanded = false;
+        this.loggedIn = false;
       }
     });
+  }
+
+  openModal(header, body, buttons) {
+    this.modalService.openModal('one thing',
+                                '<h1>another</h1>', null);
   }
 
   setCompany(id) {

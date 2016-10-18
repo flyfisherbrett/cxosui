@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SessionService, Company } from '../session/session.service';
+import { SessionService } from '../session/session.service';
 import { BenchmarksService } from './benchmarks.service';
 import { Router } from '@angular/router';
+import { Company } from '../company';
 
 @Component({
   selector: 'app-benchmarks',

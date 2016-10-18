@@ -24,3 +24,14 @@
 .disabled-link {
     color: blue;
 }
+
+.logout-link:hover {
+    cursor: pointer;
+}
+
+.edit-profile {
+    padding: 0 !important;
+    line-height: 30px;
+    height: 30px;
+    color: #1e7da9 !important;
+}

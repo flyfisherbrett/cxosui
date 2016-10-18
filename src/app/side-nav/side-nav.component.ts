@@ -1,5 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { SessionService, Company, User } from '../session/session.service';
+import { SessionService } from '../session/session.service';
+import { Company } from '../company';
+import { User } from '../user';
 
 @Component({
   selector: 'app-side-nav',
@@ -16,7 +18,9 @@ export class SideNavComponent {
 
   constructor(private sessionService: SessionService) {}
 
-  emitLogout() { this.logout.emit(); }
+  emitLogout() {
+    this.logout.emit();
+  }
 
 
   changeCompany(id) {

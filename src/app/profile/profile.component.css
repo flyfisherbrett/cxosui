@@ -1,3 +1,8 @@
 .profile-pic {
-    height: 200px;
+    max-height: 200px;
+    margin-bottom: 15px;
+}
+
+.change-password {
+    color: #1e7da9;
 }

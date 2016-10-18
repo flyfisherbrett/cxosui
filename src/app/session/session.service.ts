@@ -3,19 +3,9 @@ import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { Subject } from 'rxjs/Subject';
+import { Company } from '../company';
+import { ModalService } from '../modal/modal.service';
 
-export interface User {
-  id: number;
-  first_name: string;
-  last_name: string;
-}
-
-export interface Company {
-  id: number;
-  name: string;
-  employee_id: number;
-  role: string;
-} // defining Company interface for Typescript; not required
 
 @Injectable()
 export class SessionService {
@@ -27,7 +17,7 @@ export class SessionService {
 
   apiSession = environment.apiEndpoint + 'api/sessions';
 
-  constructor(private http: Http, private router: Router) {
+  constructor(private http: Http, private router: Router, private modalService: ModalService) {
     this.loggedIn.next(this.isLoggedIn()); // when service is instantiated, loggedIn value is detected
   }
 
@@ -41,8 +31,9 @@ export class SessionService {
         this.loggedIn.next(true);
         this.router.navigate(['cash_flow']);
       }, err => {
-        console.log(err);
-        alert(err.json().messages);
+        this.modalService.openModal('Invalid Credentials',
+                                    '<p>That Email and Password does not match our records.</p>',
+                                    null);
       }
       );
   }

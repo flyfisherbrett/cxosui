@@ -2,8 +2,8 @@
     <div class="user-panel valign-wrapper">
         <div *ngIf="user" class="valign">
             <h5>{{ user.first_name }} {{ user.last_name }}</h5>
-            <span>{{ renameRole(company.role) | uppercase }}</span><br>
-            <span (click)="emitLogout()">logout</span>
+            <span>{{ renameRole(company.role) | uppercase }}</span>
+            <a class="edit-profile" routerLink="/profile">edit profile</a>
         </div>
     </div>
 
@@ -24,7 +24,6 @@
             <li><a routerLink="/cash_flow"><i class="material-icons md-18">trending_up</i>Cash Flow</a></li>
             <li><a routerLink="/benchmarks"><i class="material-icons md-18">insert_chart</i>Benchmarks</a></li>
             <li><a routerLink="/employees"><i class="material-icons md-18">people</i>Employees</a></li>
-            <li><a routerLink="/profile"><i class="material-icons md-18">face</i>Profile</a></li>
             <li><a routerLink="/settings"><i class="material-icons md-18">settings</i>Settings</a></li>
         </ul>
     </div>
