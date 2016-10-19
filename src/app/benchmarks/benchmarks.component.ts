@@ -15,6 +15,12 @@ import { ModalService } from '../modal/modal.service';
 export class BenchmarksComponent implements OnInit {
   company: Company;
   extendedCompany: Object;
+  cashData = {};
+  receivablesData = {};
+  currentRatioData = {};
+  quickRatioData = {};
+  assetTurnoverData = {};
+  returnOnAssetsData = {};
 
   constructor(private sessionService: SessionService,
     private router: Router,
@@ -31,49 +37,95 @@ export class BenchmarksComponent implements OnInit {
     this.sessionService.companySwitch.subscribe(c => {
       this.company = c;
       this.checkUserRole();
+      this.populateBenchmarks();
     });
   }
 
   ngOnInit() {
     this.benchmarksService.companyShow(this.company.id).subscribe(res => {
       this.extendedCompany = res.json().company;
-      this.getIndustryData();
-
+      this.populateBenchmarks();
     }, err => {
       this.errorService.handle(err);
-    })
-
-    // this.benchmarksService.index(this.company.id).subscribe(res => {
-    //   if (res.json().error === 'cannot find industry data') {
-    //     this.modalService.openModal(
-    //       'No Industry Data',
-    //       `<p>Could not find Industry data for this company. 
-    //       Please set the NAICS code on the <a href="/settings">settings</a> page.</p>`,
-    //       null);
-    //   } else {
-    //     console.log(res.json());
-    //   }
-    // }, err => {
-    //   console.log(err.json());
-    //   if (err.json().error === 'cannot find industry data') {
-    //     this.modalService.openModal(
-    //       'No Industry Data',
-    //       '<p>Could not find Industry data for this company. Please set the NAICS code on the settings page.</p>',
-    //       null);
-    //   } else {
-    //     this.errorService.handle(err);
-    //   }
-    // });
+    });
   }
 
-  getIndustryData() {
-    this.benchmarksService.benchmarkData(this.extendedCompany['naics_code']).subscribe(res => {
-      if (res.json().error === 'cannot find industry data') {
-        this.noDataWarning();
-      } else {
-        console.log(this.extendedCompany['naics_code']);
-        console.log(res.json());
-      }
+  populateBenchmarks() {
+    this.getCash();
+    this.getReceivables();
+    this.getCurrentRatio();
+    this.getQuickRatio();
+    this.getAssetTurnover();
+    this.getReturnOnAssets();
+  }
+
+  getCash() {
+    this.benchmarksService.cash(this.company.id).subscribe(res => {
+      this.cashData = {
+        title: 'Cash as % of Assets',
+        graphData: res.json().data,
+        description: 'this be cash'
+      };
+    }, err => {
+      this.errorService.handle(err);
+    });
+  }
+
+  getReceivables() {
+    this.benchmarksService.receivables(this.company.id).subscribe(res => {
+      this.receivablesData = {
+        title: 'Receivables as % of Assets',
+        graphData: res.json().data,
+        description: 'this be receivables'
+      };
+    }, err => {
+      this.errorService.handle(err);
+    });
+  }
+
+  getCurrentRatio() {
+    this.benchmarksService.currentRatio(this.company.id).subscribe(res => {
+      this.currentRatioData = {
+        title: 'Current Ratio',
+        graphData: res.json().data,
+        description: 'this is current ratio'
+      };
+    }, err => {
+      this.errorService.handle(err);
+    });
+  }
+
+  getQuickRatio() {
+    this.benchmarksService.quickRatio(this.company.id).subscribe(res => {
+      this.quickRatioData = {
+        title: 'Quick Ratio',
+        graphData: res.json().data,
+        description: 'this is quick ratio'
+      };
+    }, err => {
+      this.errorService.handle(err);
+    });
+  }
+
+  getAssetTurnover() {
+    this.benchmarksService.assetTurnover(this.company.id).subscribe(res => {
+      this.assetTurnoverData = {
+        title: 'Total Asset Turnover',
+        graphData: res.json().data,
+        description: 'this is asset turnover'
+      };
+    }, err => {
+      this.errorService.handle(err);
+    });
+  }
+
+  getReturnOnAssets() {
+    this.benchmarksService.returnOnAssets(this.company.id).subscribe(res => {
+      this.returnOnAssetsData = {
+        title: 'Return on Assets',
+        graphData: res.json().data,
+        description: 'this is return on assets'
+      };
     }, err => {
       this.errorService.handle(err);
     });

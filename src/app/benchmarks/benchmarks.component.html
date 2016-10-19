@@ -1,20 +1,20 @@
 <div class="row">
-    <div class="col s12 m4">
-        <app-benchmark></app-benchmark>
-    </div>
-    <div class="col s12 m4">
-        <app-benchmark></app-benchmark>
-    </div>
-    <div class="col s12 m4">
-        <app-benchmark></app-benchmark>
-    </div>
-    <div class="col s12 m4">
-        <app-benchmark></app-benchmark>
-    </div>
-    <div class="col s12 m4">
-        <app-benchmark></app-benchmark>
-    </div>
-    <div class="col s12 m4">
-        <app-benchmark></app-benchmark>
-    </div>
+	<div class="col s12 m4">
+		<app-benchmark [name]="'cash'" [data]="cashData"></app-benchmark>
+	</div>
+	<div class="col s12 m4">
+		<app-benchmark [name]="'receivables'" [data]="receivablesData"></app-benchmark>
+	</div>
+	<div class="col s12 m4">
+		<app-benchmark [name]="'cr'" [data]="currentRatioData"></app-benchmark>
+	</div>
+	<div class="col s12 m4">
+		<app-benchmark [name]="'qr'" [data]="quickRatioData"></app-benchmark>
+	</div>
+	<div class="col s12 m4">
+		<app-benchmark [name]="'at'" [data]="assetTurnoverData"></app-benchmark>
+	</div>
+	<div class="col s12 m4">
+		<app-benchmark [name]="'roa'" [data]="returnOnAssetsData"></app-benchmark>
+	</div>
 </div>

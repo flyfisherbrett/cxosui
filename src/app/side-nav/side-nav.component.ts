@@ -14,17 +14,12 @@ export class SideNavComponent {
   @Input() companies: Array<Company>;
   @Input() company: Company;
   @Output() companyChange = new EventEmitter();
-  @Output() logout = new EventEmitter();
+  @Output() addCompany = new EventEmitter();
 
   constructor(private sessionService: SessionService) {}
 
-  emitLogout() {
-    this.logout.emit();
-  }
-
-
   changeCompany(id) {
-    this.companyChange.emit( parseInt(id) );
+    this.companyChange.emit( parseInt(id, 10) );
   }
 
   renameRole(role) {
@@ -36,8 +31,7 @@ export class SideNavComponent {
     return roleMap[role];
   }
 
-  addCompany(e) {
-    e.preventDefault();
-    console.log('add it!');
+  emitAddCompany(e) {
+    this.addCompany.emit();
   }
 }

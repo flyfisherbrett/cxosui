@@ -62,4 +62,8 @@ export class AppComponent {
   }
 
   logout() { this.sessionService.logout(); }
+
+  showAddCompanyModal() {
+    $('#modal-add-company').openModal();
+  }
 }

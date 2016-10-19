@@ -37,7 +37,7 @@ export class ProfileService {
           }
         }
       };
-      xhr.open('POST', environment.apiEndpoint + 'api/users/' + userId + '/attachables', true);
+      xhr.open('POST', environment.apiEndpoint + 'api/users/' + userId + '/set_profile_pic', true);
       xhr.setRequestHeader('Authorization', this.sessionService.headerToken());
 
       let formData = new FormData();

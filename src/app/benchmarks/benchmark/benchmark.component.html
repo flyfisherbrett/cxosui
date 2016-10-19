@@ -1,5 +1,11 @@
 <div class="card big-benchmark">
-    <div class="card-content">
-        <p>hey hey</p>
-    </div>
+	<div class="card-content big-content">
+		<span>{{ data.title }}</span>
+		<div id="{{name}}-chart" class="chart-div"></div>
+	</div>
+	<span class="activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
+	<div class="card-reveal">
+		<span class="card-title grey-text text-darken-4">{{ data.title }}<i class="material-icons right">close</i></span>
+		<p>{{ data.description }}</p>
+	</div>
 </div>

@@ -1,3 +1,15 @@
 .big-benchmark {
     height: 300px;
 }
+
+.big-content {
+    height: 270px;
+}
+
+.activator:hover {
+    cursor: pointer;
+}
+
+.chart-div {
+    height: 250px;
+}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../session/session.service';
 import { ProfileService } from './profile.service';
 import { ErrorService } from '../error/error.service';
+import { ModalService } from '../modal/modal.service';
 import { Router } from '@angular/router';
 import { Company } from '../company';
 import { User } from '../user';
@@ -34,7 +35,8 @@ export class ProfileComponent implements OnInit {
   constructor(private sessionService: SessionService,
               private router: Router,
               private profileService: ProfileService,
-              private errorService: ErrorService) {
+              private errorService: ErrorService,
+              private modalService: ModalService) {
 
     if (!this.sessionService.isLoggedIn()) {
       this.router.navigate(['/']);
@@ -96,10 +98,16 @@ export class ProfileComponent implements OnInit {
       this.updateEmployeeModel();
       this.profileService.updateProfile(this.employee.id, this.parseEmployeeForUpdate())
         .subscribe(res => {
-          console.log(res.json());
+          this.updatedModal();
         }, err => {
           console.log(err);
         });
+    }
+
+    updatedModal() {
+      this.modalService.openModal('Account Updated',
+        '<p>Your profile settings have been updated</p>',
+        null);
     }
 
     updateEmployeeModel() {
