@@ -27,8 +27,11 @@ export class BenchmarkComponent implements OnChanges {
           type: 'column'
         },
         title: { text: ''},
+        yAxis: {
+          title: { text: ''}
+        },
         xAxis: {
-          categories: [2012, 2013, 2014, 2015, 2016]
+          categories: [2012, 2013, 2014, 2015, 2016] // should not be static, change asap
         },
         credits: {
           enabled: false

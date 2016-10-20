@@ -22,7 +22,8 @@ export class BenchmarksComponent implements OnInit {
   assetTurnoverData = {};
   returnOnAssetsData = {};
 
-  constructor(private sessionService: SessionService,
+  constructor(
+    private sessionService: SessionService,
     private router: Router,
     private benchmarksService: BenchmarksService,
     private errorService: ErrorService,
@@ -35,19 +36,45 @@ export class BenchmarksComponent implements OnInit {
     this.checkUserRole();
 
     this.sessionService.companySwitch.subscribe(c => {
-      this.company = c;
-      this.checkUserRole();
-      this.populateBenchmarks();
+        this.company = c;
+        this.checkUserRole();
+        this.getCompany();
     });
   }
 
   ngOnInit() {
+    this.getCompany();
+  }
+
+  checkUserRole() {
+    if (this.company.role !== 'admin') { this.router.navigate(['/profile']); }
+  }
+
+  noDataWarning() {
+    this.modalService.openModal(
+      'No Industry Data',
+      `<p>Unable to display industry data becasue this company has no NAICS code.</p>
+      <p>Please set and save an NAICS code for this company.</p>
+      <h5 class>Redirecting you to the settings page.</h5>`,
+      null);
+  }
+
+  getCompany() {
     this.benchmarksService.companyShow(this.company.id).subscribe(res => {
       this.extendedCompany = res.json().company;
-      this.populateBenchmarks();
+      this.loadOrRedirect();
     }, err => {
       this.errorService.handle(err);
     });
+  }
+
+  loadOrRedirect() {
+    if (!this.extendedCompany['naics_code'] && this.router.url === '/benchmarks') {
+      this.noDataWarning();
+      this.router.navigate(['/settings']);
+    } else {
+      this.populateBenchmarks();
+    }
   }
 
   populateBenchmarks() {
@@ -152,6 +179,7 @@ This ratio gives investors and debtors a clear view of how well a company's mana
       this.errorService.handle(err);
     });
   }
+<<<<<<< HEAD
 
   checkUserRole() {
     if (this.company.role !== 'admin') { this.router.navigate(['/profile']); }
@@ -164,4 +192,6 @@ This ratio gives investors and debtors a clear view of how well a company's mana
       Make sure the NAICS code is set for this company on the <a href="/settings">settings</a> page.</p>`,
       null);
   }
+=======
+>>>>>>> master
 }
