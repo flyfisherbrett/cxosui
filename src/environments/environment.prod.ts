@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiEndpoint: 'https://www.cxo-api.com/'
+  apiEndpoint: 'http://staging-env.2pekksa44q.us-west-2.elasticbeanstalk.com/'
 };
