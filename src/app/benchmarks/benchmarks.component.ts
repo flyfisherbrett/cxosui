@@ -22,7 +22,8 @@ export class BenchmarksComponent implements OnInit {
   assetTurnoverData = {};
   returnOnAssetsData = {};
 
-  constructor(private sessionService: SessionService,
+  constructor(
+    private sessionService: SessionService,
     private router: Router,
     private benchmarksService: BenchmarksService,
     private errorService: ErrorService,
@@ -35,19 +36,45 @@ export class BenchmarksComponent implements OnInit {
     this.checkUserRole();
 
     this.sessionService.companySwitch.subscribe(c => {
-      this.company = c;
-      this.checkUserRole();
-      this.populateBenchmarks();
+        this.company = c;
+        this.checkUserRole();
+        this.getCompany();
     });
   }
 
   ngOnInit() {
+    this.getCompany();
+  }
+
+  checkUserRole() {
+    if (this.company.role !== 'admin') { this.router.navigate(['/profile']); }
+  }
+
+  noDataWarning() {
+    this.modalService.openModal(
+      'No Industry Data',
+      `<p>Unable to display industry data becasue this company has no NAICS code.</p>
+      <p>Please set and save an NAICS code for this company.</p>
+      <h5 class>Redirecting you to the settings page.</h5>`,
+      null);
+  }
+
+  getCompany() {
     this.benchmarksService.companyShow(this.company.id).subscribe(res => {
       this.extendedCompany = res.json().company;
-      this.populateBenchmarks();
+      this.loadOrRedirect();
     }, err => {
       this.errorService.handle(err);
     });
+  }
+
+  loadOrRedirect() {
+    if (!this.extendedCompany['naics_code'] && this.router.url === '/benchmarks') {
+      this.noDataWarning();
+      this.router.navigate(['/settings']);
+    } else {
+      this.populateBenchmarks();
+    }
   }
 
   populateBenchmarks() {
@@ -88,7 +115,10 @@ export class BenchmarksComponent implements OnInit {
       this.currentRatioData = {
         title: 'Current Ratio',
         graphData: res.json().data,
-        description: 'this is current ratio'
+        description:
+          `<p><strong>Current Ratio = Current Assets/Current Liabilities</strong></p>
+          <p>This ratio tells you the company's ability to pay current debt without having to resort to outside financing.</p> 
+          <p>A current ratio of at least 1.0 is considered reasonable for liquidity purposes.</p>`
       };
     }, err => {
       this.errorService.handle(err);
@@ -129,17 +159,5 @@ export class BenchmarksComponent implements OnInit {
     }, err => {
       this.errorService.handle(err);
     });
-  }
-
-  checkUserRole() {
-    if (this.company.role !== 'admin') { this.router.navigate(['/profile']); }
-  }
-
-  noDataWarning() {
-    this.modalService.openModal(
-      'No Industry Data',
-      `<p>Could not find Industry data for this company. 
-      Make sure the NAICS code is set for this company on the <a href="/settings">settings</a> page.</p>`,
-      null);
   }
 }

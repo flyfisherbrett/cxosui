@@ -24,7 +24,7 @@ import { SessionService } from '../session/session.service';
     ChartModule,
     employeesRouting
   ],
-  providers: [SessionService], // declared here to share data between components
+  providers: [], // declared here to share data between components
   bootstrap: [EmployeesComponent]
 })
 

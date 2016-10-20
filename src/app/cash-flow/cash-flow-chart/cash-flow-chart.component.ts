@@ -14,9 +14,11 @@ export class CashFlowChartComponent implements OnChanges {
     @Input() user;
     @Input() company;
     @Input() data: any;
+    @Input() projection: any;
+    @Input() flags: any;
     options: {};
 
-    ngOnChanges() {
+    ngOnChanges(changes: SimpleChanges) {
         if (this.data) { this.drawChart(); }
     }
 
@@ -38,7 +40,7 @@ export class CashFlowChartComponent implements OnChanges {
                 ordinal: false
             },
             rangeSelector: {
-                selected: 1,
+                selected: 0,
                 inputEnabled: false
             },
             credits: {
@@ -68,11 +70,11 @@ export class CashFlowChartComponent implements OnChanges {
                     pointFormat: 'Balance: ${point.y:,.2f}',
                     useHTML: true
                 },
-                data: this.data.actual.concat(this.data.total.data)
+                data: this.data.actual.concat(this.projection)
             }, {
                 type: 'flags',
                 onSeries: 'cash',
-                data: this.data.flags.reduce((memo, flag) => {
+                data: this.flags.reduce((memo, flag) => {
                     let match = memo.filter(f => { return flag.x === f.x; })[0];
                     if (match) {
                         let i = memo.indexOf(match);

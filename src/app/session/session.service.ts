@@ -10,7 +10,8 @@ import { ModalService } from '../modal/modal.service';
 @Injectable()
 export class SessionService {
   loggedIn = new Subject<Boolean>();
-  companySwitch = new Subject<Company>();
+  private _updateCompany = new Subject<Company>();
+  companySwitch = this._updateCompany.asObservable();
   // anything subscribed will now know the attributes because of the 'Company' type;
   // must define the interface first to use this type, this was previously set to 'Object'
   // before Company interface was defined;
@@ -56,7 +57,7 @@ export class SessionService {
 
   changeCompany(company: Company) {
     localStorage.setItem('company', JSON.stringify(company));
-    this.companySwitch.next(company);
+    this._updateCompany.next(company);
   }
 
   logout() {
@@ -82,7 +83,7 @@ export class SessionService {
   setCompany(id) {
     let company = this.getCompanies().find(c => { return c.id === id; });
     localStorage.setItem('company', JSON.stringify(company));
-    this.companySwitch.next(company);
+    this._updateCompany.next(company);
   }
 
   processCompanyRoles(companies, employees) {

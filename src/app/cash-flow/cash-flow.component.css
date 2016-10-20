@@ -43,5 +43,6 @@
 }
 
 .mod-button:hover {
+    cursor: pointer;
     color: #075488 !important;
 }

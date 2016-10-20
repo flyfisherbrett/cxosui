@@ -6,6 +6,6 @@
 	<span class="activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
 	<div class="card-reveal">
 		<span class="card-title grey-text text-darken-4">{{ data.title }}<i class="material-icons right">close</i></span>
-		<p>{{ data.description }}</p>
+		<div [innerHTML]="data.description"></div>
 	</div>
 </div>
