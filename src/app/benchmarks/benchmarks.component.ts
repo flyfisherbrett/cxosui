@@ -179,19 +179,4 @@ This ratio gives investors and debtors a clear view of how well a company's mana
       this.errorService.handle(err);
     });
   }
-<<<<<<< HEAD
-
-  checkUserRole() {
-    if (this.company.role !== 'admin') { this.router.navigate(['/profile']); }
-  }
-
-  noDataWarning() {
-    this.modalService.openModal(
-      'No Industry Data',
-      `<p>Could not find Industry data for this company.
-      Make sure the NAICS code is set for this company on the <a href="/settings">settings</a> page.</p>`,
-      null);
-  }
-=======
->>>>>>> master
 }
