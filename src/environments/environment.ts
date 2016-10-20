@@ -6,5 +6,5 @@
 export const environment = {
   production: false,
   // apiEndpoint: 'http://localhost:3000/'
-  apiEndpoint: 'https://www.cxo-api.com/'
-};
+  apiEndpoint: 'http://staging-env.2pekksa44q.us-west-2.elasticbeanstalk.com/'
+}
