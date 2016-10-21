@@ -12,6 +12,7 @@ import { User } from '../user';
   styleUrls: ['./settings.component.css'],
   providers: [SettingsService] // declared here as it only services this component
 })
+
 export class SettingsComponent implements OnInit {
   user: User;
   company: Company;
@@ -20,7 +21,8 @@ export class SettingsComponent implements OnInit {
   extendedCompany = {};
   searchText = '';
 
-  constructor(private sessionService: SessionService,
+  constructor(
+    private sessionService: SessionService,
     private router: Router,
     private settingsService: SettingsService,
     private errorService: ErrorService) {
@@ -63,6 +65,8 @@ export class SettingsComponent implements OnInit {
     this.extendedCompany['naics_code'] = code;
   }
 
+  addUser() {}
+
   filterCodes() {
     if (this.searchText) {
       this.filteredCodes = this.codes.filter(code => {
@@ -74,4 +78,6 @@ export class SettingsComponent implements OnInit {
   checkUserRole() {
     if (this.company.role !== 'admin') { this.router.navigate(['/profile']); }
   }
+
+
 }

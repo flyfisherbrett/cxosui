@@ -14,15 +14,20 @@ nav {
 }
 
 .logout-btn {
-    color: black;
+    height: 88px;
 }
 
 ul a {
-    height: 88px;
+    padding-top: 10px;
     color: #1e7da9
 }
 
 ul a:hover {
     color: #075488;
     font-weight: bold;
+}
+
+.side-nav-toggle {
+    margin-left: 100px;
+    margin-top: 10px;
 }

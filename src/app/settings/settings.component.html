@@ -7,24 +7,27 @@
 		<div class="card-content">
 
 			<span class="card-title">Industry Code - NAICS</span>
-			<div class="input-field form-group">
-				<label for="naics" [class.active]="extendedCompany.naics_code">NAICS Code</label>
-				<input class="form-control" type="text" id="naics" required [(ngModel)]="extendedCompany.naics_code">
-			</div>
+			<form action="setCode()">
+				<div class="input-field form-group">
+					<label for="naics" [class.active]="extendedCompany.naics_code">NAICS Code</label>
+					<input class="form-control" type="text" id="naics" name="code" required [(ngModel)]="extendedCompany.naics_code">
+				</div>
 
-			<div class="input-field code-search">
-				<label for="search"><i class="material-icons">search</i></label>
-				<input id="search" type="text" (keyup)="filterCodes()" [(ngModel)]="searchText">
-			</div>
+				<div class="input-field code-search">
+					<label for="search"><i class="material-icons">search</i></label>
+					<input id="search" type="text" (keyup)="filterCodes()" name="search" [(ngModel)]="searchText">
+				</div>
 
-			<div class="code-list">
-				<table class="striped">
-					<tr *ngFor="let code of filteredCodes">
-						<td class="naics-code" (click)="setCode(code.code)">{{ code.text }}</td>
-					</tr>
-				</table>
-			</div>
-
+				<div class="code-list">
+					<table class="striped">
+						<tr *ngFor="let code of filteredCodes">
+							<td class="naics-code" (click)="setCode(code.code)">{{ code.text }}</td>
+						</tr>
+					</table>
+				</div>
+				<br>
+				<button type="submit" class="waves-effect waves-light btn cxo-btn-primary">save code</button>
+			</form>
 		</div>
 
 	</div>
@@ -36,19 +39,20 @@
 		<div class="card-content">
 
 			<span class="card-title">Add a System User</span>
-			<form action="">
+			<form action="addUser()">
 				<div class="input-field form-group">
 					<label for="firstName">First Name</label>
-					<input class="form-control" type="text" id="firstName">
+					<input class="form-control" type="text" name="firstName" id="firstName" required>
 				</div>
 				<div class="input-field form-group">
 					<label for="lastName">Last Name</label>
-					<input class="form-control" type="text" id="lastName">
+					<input class="form-control" type="text" name="lastName" id="lastName" required>
 				</div>
 				<div class="input-field form-group">
 					<label for="email">Email</label>
-					<input class="form-control" type="text" id="email">
+					<input class="form-control validate" type="email" name="email" id="email" required>
 				</div>
+				<button type="submit" class="waves-effect waves-light btn cxo-btn-primary">create user</button>
 
 			</form>
 		</div>

@@ -13,7 +13,7 @@ declare var $;
   providers: []
 })
 export class AppComponent {
-  sideNavExpanded = true;
+  sideNavExpanded: boolean;
   user: User;
   companies: Array<Company>;
   company: Company;
@@ -22,6 +22,7 @@ export class AppComponent {
 
   constructor(private sessionService: SessionService, private router: Router, private modalService: ModalService) {
     if (this.sessionService.isLoggedIn()) {
+      this.sideNavExpanded = true;
       this.user = this.sessionService.getUser() || {};
       this.companies = this.sessionService.getCompanies();
       this.company = this.sessionService.getCompany();

@@ -1,4 +1,7 @@
-<app-top-nav (sideNavChange)="toggleSideNav()" (logout)="logout()" [loggedIn]="loggedIn"></app-top-nav>
+<app-top-nav 	(sideNavChange)="toggleSideNav()" 
+				(logout)="logout()" 
+				[loggedIn]="loggedIn"
+				[sideNavExpanded]="sideNavExpanded"></app-top-nav>
 
 <div class="row">
 	<div id="sidebar" class="side-nav fixed" *ngIf="sideNavExpanded">

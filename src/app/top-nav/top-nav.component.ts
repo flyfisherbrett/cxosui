@@ -8,6 +8,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class TopNavComponent {
   @Output() sideNavChange = new EventEmitter();
   @Output() logout = new EventEmitter();
+  @Input() sideNavExpanded: boolean;
   @Input() loggedIn;
 
   toggleSideNav(e) {
