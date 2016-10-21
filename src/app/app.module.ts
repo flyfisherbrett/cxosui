@@ -14,6 +14,8 @@ import { ModalService } from './modal/modal.service';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { EulaComponent } from './footer/eula.component';
+import { PrivacyComponent } from './footer/privacy.component';
+import {SupportComponent} from './footer/support.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
@@ -55,7 +57,9 @@ import { ModalComponent } from './modal/modal.component';
     ExpByCatComponent,
     ModalComponent,
     NotFoundComponent,
-    EulaComponent
+    EulaComponent,
+    SupportComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,
