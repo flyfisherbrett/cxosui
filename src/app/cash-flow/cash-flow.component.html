@@ -34,7 +34,10 @@
 						<div class="row mod-row" *ngFor="let invoice of invoices; let i = index" [class.shaded]="(i % 2) === 0">
 							<div class="col s3 truncate">{{ invoice.description }}</div>
 							<div class="col s2">
-								<p class="center-align"><input type="checkbox" id="invoice-{{invoice.id}}" [(ngModel)]="invoice.include"><label [attr.for]="'invoice-' + invoice.id"></label></p>
+								<p class="center-align">
+									<input class="mod-toggle" type="checkbox" id="invoice-{{invoice.id}}" [(ngModel)]="invoice.include">
+									<label [attr.for]="'invoice-' + invoice.id"></label>
+								</p>
 							</div>
 							<div class="col s3"><input class="mod-input" type="number" [(ngModel)]="invoice.total"></div>
 							<div class="col s4"><input class="mod-input" type="date" [(ngModel)]="invoice.date"></div>
@@ -46,8 +49,8 @@
 		<div class="card-action">
 			<a *ngIf="expansion === 'contracted'" href="" (click)="expand($event)" class="mod-button">Adjust Projection</a>
 			<a *ngIf="expansion === 'expanded'" href="" (click)="contract($event)" class="mod-button">Hide Modifiers</a>
-			<a (click)="createProjection()" class="mod-button">Update Projection</a>
-			<a (click)="prepareCashFlowData()" class="mod-button">Reset</a>
+			<a *ngIf="expansion === 'expanded'" (click)="createProjection()" class="mod-button">Update Projection</a>
+			<a *ngIf="expansion === 'expanded'" (click)="prepareCashFlowData()" class="mod-button">Reset</a>
 		</div>
 	</div>
 </div>

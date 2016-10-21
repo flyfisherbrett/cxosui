@@ -1,4 +1,4 @@
-import { Component, OnChanges, Input } from '@angular/core';
+import { Component, OnChanges, Input, SimpleChanges } from '@angular/core';
 declare var $;
 
 @Component({
@@ -14,10 +14,21 @@ export class BenchmarkComponent implements OnChanges {
 
   }
 
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
+    // console.log(changes);
     if (this.data.graphData) {
       this.drawChart();
     }
+  }
+
+  lastFiveYears() {
+    let year = new Date().getUTCFullYear() - 4;
+    let years = [];
+    for (let _i = 0; _i < 5; _i++) {
+      years.push(year);
+      year++;
+    }
+    return years;
   }
 
   drawChart() {
@@ -26,12 +37,12 @@ export class BenchmarkComponent implements OnChanges {
         chart: {
           type: 'column'
         },
-        title: { text: ''},
+        title: { text: '' },
         yAxis: {
-          title: { text: ''}
+          title: { text: '' }
         },
         xAxis: {
-          categories: [2012, 2013, 2014, 2015, 2016] // should not be static, change asap
+          categories: this.lastFiveYears()
         },
         credits: {
           enabled: false

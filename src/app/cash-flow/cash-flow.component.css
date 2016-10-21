@@ -46,3 +46,7 @@
     cursor: pointer;
     color: #075488 !important;
 }
+
+.mod-toggle {
+    visibility: hidden;
+}

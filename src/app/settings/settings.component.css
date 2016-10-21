@@ -1,5 +1,5 @@
 .code-list {
-    height: 235px;
+    height: 315px;
     overflow: scroll;
 }
 
@@ -8,9 +8,9 @@
 }
 
 .industry-codes {
-    height: 500px;
+    height: 600px;
 }
 
 .code-search {
-    margin-top: 30px;
+    margin-top: 15px;
 }

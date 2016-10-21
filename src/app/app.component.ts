@@ -29,14 +29,14 @@ export class AppComponent {
     }
 
     this.router.events.subscribe(event => {
-      if (event.url === '/') {this.sideNavExpanded = false; };
+      if (event.url === '/') { this.sideNavExpanded = false; };
     });
 
     this.sessionService.companySwitch.subscribe(c => {
       this.company = c;
     });
 
-    this.sessionService.loggedIn.subscribe( loggedIn => {
+    this.sessionService.loggedIn.subscribe(loggedIn => {
       if (loggedIn) {
         this.sideNavExpanded = true;
         this.user = this.sessionService.getUser();
@@ -59,6 +59,7 @@ export class AppComponent {
 
   toggleSideNav() {
     this.sideNavExpanded = !this.sideNavExpanded;
+    $(window).trigger('resize');
   }
 
   logout() { this.sessionService.logout(); }

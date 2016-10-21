@@ -64,7 +64,7 @@ export class SessionService {
     localStorage.removeItem('companies');
     localStorage.removeItem('user');
     this.loggedIn.next(false);
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 
   getCompanies() {

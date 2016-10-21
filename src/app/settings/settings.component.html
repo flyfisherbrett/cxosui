@@ -2,25 +2,65 @@
 	<h5>Settings for {{ company.name }}</h5>
 </div>
 
-<div class="col s12 m6 l4 card industry-codes">
-	<div class="card-content">
-		<span class="card-title">Industry Code - NAICS</span>
-		<div class="input-field form-group">
-			<label for="naics" [class.active]="extendedCompany.naics_code">NAICS Code</label>
-			<input class="form-control" type="text" id="naics" required [(ngModel)]="extendedCompany.naics_code">
+<div class="col s12 m6 l4 industry-codes">
+	<div class="card">
+		<div class="card-content">
+
+			<span class="card-title">Industry Code - NAICS</span>
+			<div class="input-field form-group">
+				<label for="naics" [class.active]="extendedCompany.naics_code">NAICS Code</label>
+				<input class="form-control" type="text" id="naics" required [(ngModel)]="extendedCompany.naics_code">
+			</div>
+
+			<div class="input-field code-search">
+				<label for="search"><i class="material-icons">search</i></label>
+				<input id="search" type="text" (keyup)="filterCodes()" [(ngModel)]="searchText">
+			</div>
+
+			<div class="code-list">
+				<table class="striped">
+					<tr *ngFor="let code of filteredCodes">
+						<td class="naics-code" (click)="setCode(code.code)">{{ code.text }}</td>
+					</tr>
+				</table>
+			</div>
+
 		</div>
 
-		<div class="code-list">
-			<table class="striped">
-				<tr *ngFor="let code of filteredCodes">
-					<td class="naics-code" (click)="setCode(code.code)">{{ code.text }}</td>
-				</tr>
-			</table>
-		</div>
+	</div>
+</div>
 
-		<div class="input-field code-search">
-			<label for="search"><i class="material-icons">search</i></label>
-			<input id="search" type="text" (keyup)="filterCodes()" [(ngModel)]="searchText">
+
+<div class="col s12 m6 l4 new-user">
+	<div class="card">
+		<div class="card-content">
+
+			<span class="card-title">Add a System User</span>
+			<form action="">
+				<div class="input-field form-group">
+					<label for="firstName">First Name</label>
+					<input class="form-control" type="text" id="firstName">
+				</div>
+				<div class="input-field form-group">
+					<label for="lastName">Last Name</label>
+					<input class="form-control" type="text" id="lastName">
+				</div>
+				<div class="input-field form-group">
+					<label for="email">Email</label>
+					<input class="form-control" type="text" id="email">
+				</div>
+
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="col s12 m6 l4 pay-period">
+	<div class="card">
+		<div class="card-content">
+
+			<span class="card-title">Set Pay Period</span>
+
 		</div>
 	</div>
 </div>

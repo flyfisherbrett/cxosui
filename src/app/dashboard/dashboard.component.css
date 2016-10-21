@@ -6,3 +6,7 @@
 .expenses {
     height: 200px;
 }
+
+text:hover {
+    cursor: default;
+}

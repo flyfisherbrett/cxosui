@@ -19,6 +19,10 @@ const appRoutes: Routes = [
         component: LoginComponent
     },
     {
+        path: 'login',
+        component: LoginComponent
+    },
+    {
         path: 'cash_flow',
         component: DashboardComponent
     },
