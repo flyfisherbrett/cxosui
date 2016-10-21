@@ -19,6 +19,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { CashFlowComponent } from './cash-flow/cash-flow.component';
 import { CashFlowChartComponent } from './cash-flow/cash-flow-chart/cash-flow-chart.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 import { ArApComponent } from './ar-ap/ar-ap.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { BenchmarksComponent } from './benchmarks/benchmarks.component';
@@ -45,6 +46,7 @@ import { ModalComponent } from './modal/modal.component';
     CashFlowComponent,
     CashFlowChartComponent,
     LoginComponent,
+    RegisterComponent,
     ArApComponent,
     BenchmarksComponent,
     BenchmarkComponent,
