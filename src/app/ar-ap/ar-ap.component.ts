@@ -35,8 +35,10 @@ export class ArApComponent{
 
     init(){
       this.getCash();
+
       if(this.company){
-        this.getData(this.company.id);
+        this.getAR(this.company.id);
+        this.getAP(this.company.id);
       }
     }
 
@@ -51,32 +53,42 @@ export class ArApComponent{
       }
     }
 
-    getData(id) {
-        this.arAp.getReportData(id, 'AgedPayables').subscribe(res => {
-            let response = res.json().data.resources;
-            this.vendors = response.map(obj => {
-                let vendor = { name: '', balance: 0 };
-                vendor.name = obj.name;
-                vendor.balance = obj.Total;
-                return vendor;
-            });
-            this.apTotal = this.vendors.reduce((memo, ven) => {
-                return memo + parseFloat(ven.balance);
-            }, 0);
+    getAR(id){
+      this.arAp.getReportData(id, 'AgedReceivables').subscribe(res => {
+        let response = res.json().data.resources;
+
+        this.customers = response.map(obj => {
+          let customer = { name: '', balance: 0 };
+          customer.name = obj.name;
+          customer.balance = obj.Total;
+          return customer;
+        });
+        
+        this.arTotal = this.customers.reduce((memo, cus) => {
+          return memo + parseFloat(cus.balance);
+        }, 0);
+      }, err => {
+        this.errorService.handle(err);
+      });
+    }
+
+    getAP(id) {
+      this.arAp.getReportData(id, 'AgedPayables').subscribe(res => {
+        let response = res.json().data.resources;
+
+        this.vendors = response.map(obj => {
+          let vendor = { name: '', balance: 0 };
+          vendor.name = obj.name;
+          vendor.balance = obj.Total;
+          return vendor;
         });
 
-        this.arAp.getReportData(id, 'AgedReceivables').subscribe(res => {
-            let response = res.json().data.resources;
-            this.customers = response.map(obj => {
-                let customer = { name: '', balance: 0 };
-                customer.name = obj.name;
-                customer.balance = obj.Total;
-                return customer;
-            });
-            this.arTotal = this.customers.reduce((memo, cus) => {
-                return memo + parseFloat(cus.balance);
-            }, 0);
-        });
+        this.apTotal = this.vendors.reduce((memo, ven) => {
+          return memo + parseFloat(ven.balance);
+        }, 0);
+      }, err => {
+        this.errorService.handle(err);
+      });
     }
 
 }
