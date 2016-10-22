@@ -1,81 +1,99 @@
 <div class="container">
-<h1>Start Your Free Trial</h1>
-<div class="row">
-    <form  (submit)="create()" class="col s12">
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">account_circle</i>
-          <input  name="firstName" id="firstName" [(ngModel)]="user.first_name" type="text" class="validate" required>
-          <label for="firstName">First Name</label>
-        </div>
-        <div class="input-field col s6">
-          <!--<i class="material-icons prefix">account_circle</i>-->
-          <input  name="lastName" id="lastName" [(ngModel)]="user.last_name" type="text" class="validate" required>
-          <label for="lastName">Last Name</label>
-        </div>
-        <div class="input-field col s12">
-          <i class="material-icons prefix">email</i>
-          <input name="email" id="email" type="email" [(ngModel)]="user.email" class="validate" required>
-					<label for="email">Email</label>
-        </div>
-
-        <div class="input-field col s6">
-          <i class="material-icons prefix"></i>
-          <input id="password" name="password" type="password" [(ngModel)]="user.password" class="validate" required>
-          <label for="password">Password</label>
-        </div>
-        <div class="input-field col s6">
-          <i class="material-icons prefix"></i>
-          <input id="confirmPassword" name="confirmPassword" type="password" [(ngModel)]="user.password_confirmation" class="validate" required>
-          <label for="confirmPassword">Confirm Password</label>
-        </div>
-        <div class="input-field col s12">
-          <i class="material-icons prefix"></i>
-          <input name="street" id="street" type="text" [(ngModel)]="user.street" class="validate" required>
-					<label for="street">Street Address</label>
-        </div>
-        <div class="input-field col s4">
-          <i class="material-icons prefix"></i>
-          <input name="city" id="city" type="text" [(ngModel)]="user.city" class="validate" required>
-					<label for="city">City</label>
-        </div>
-        <div class="input-field col s4">
-          <i class="material-icons prefix"></i>
-          <input name="state" id="state" type="text" [(ngModel)]="user.state" class="validate" required>
-					<label for="state">State</label>
-        </div>
-        <div class="input-field col s4">
-          <i class="material-icons prefix">zip</i>
-          <input name="zip" id="zip" type="text" [(ngModel)]="user.zip" class="validate" required>
-					<label for="zip">Zip</label>
-        </div>
-        <div class="input-field col s4">
-          <i class="material-icons prefix">credit_card</i>
-          <input name="ccnum" id="ccnum" type="text" [(ngModel)]="subscription.card_number" class="validate" required>
-					<label for="ccnum">Credit Card Number</label>
-        </div>
-        <div class="input-field col s2">
-          <i class="material-icons prefix"></i>
-          <input name="ccyr" id="ccyr" type="text" [(ngModel)]="subscription.expiration_year" class="validate" required>
-					<label for="ccyr">Expiration Yr</label>
-        </div>
-        <div class="input-field col s2">
-          <i class="material-icons prefix"></i>
-          <input name="ccmo" id="ccmo" type="text" [(ngModel)]="subscription.expiration_month" class="validate" required>
-					<label for="ccmo">Expiration Mo</label>
-        </div>
-        <div class="input-field col s2">
-          <i class="material-icons prefix"></i>
-          <input name="ccv" id="ccv" type="text" [(ngModel)]="subscription.cvv" class="validate" required>
-					<label for="ccv">CCV</label>
-        </div>
-        <div class="input-field col s12">
-          <i class="material-icons prefix"></i>
-          <button type="submit" class="waves-effect waves-light btn cxo-btn-primary">Start Trial</button>
-        </div>
-
-      </div>
-    </form>
+  <div class="signup" *ngIf="!signingUp">
+    <h5>Thank You for Signing Up! Please login.</h5>
+    <a href="/" class="waves-effect waves-light btn cxo-btn-primary">Login</a>
   </div>
+  <div class="signup" *ngIf="signingUp">
+    <h1>Start Your Free Trial</h1>
+    <div class="row">
+      <form  (submit)="create()" class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <i class="material-icons prefix">account_circle</i>
+            <input  name="firstName" id="firstName" [(ngModel)]="user.first_name" type="text" class="validate" required>
+            <label for="firstName">First Name</label>
+          </div>
+          <div class="input-field col s6">
+            <!--<i class="material-icons prefix">account_circle</i>-->
+            <input  name="lastName" id="lastName" [(ngModel)]="user.last_name" type="text" class="validate" required>
+            <label for="lastName">Last Name</label>
+          </div>
+          <div class="input-field col s12">
+            <i class="material-icons prefix">email</i>
+            <input name="email" id="email" type="email" [(ngModel)]="user.email" class="validate" required>
+            <label for="email">Email</label>
+          </div>
 
+          <div class="input-field col s6">
+            <i class="material-icons prefix"></i>
+            <input id="password" name="password" type="password" [(ngModel)]="user.password" class="validate" required>
+            <label for="password">Password</label>
+          </div>
+          <div class="input-field col s6">
+            <i class="material-icons prefix"></i>
+            <input id="confirmPassword" name="confirmPassword" type="password" [(ngModel)]="user.password_confirmation" class="validate" required>
+            <label for="confirmPassword">Confirm Password</label>
+          </div>
+          <div class="input-field col s12">
+            <i class="material-icons prefix"></i>
+            <input name="street" id="street" type="text" [(ngModel)]="user.street" class="validate" required>
+            <label for="street">Street Address</label>
+          </div>
+          <div class="input-field col s4">
+            <i class="material-icons prefix"></i>
+            <input name="city" id="city" type="text" [(ngModel)]="user.city" class="validate" required>
+            <label for="city">City</label>
+          </div>
+          <div class="input-field col s4">
+            <i class="material-icons prefix"></i>
+            <input name="state" id="state" type="text" [(ngModel)]="user.state" class="validate" required>
+            <label for="state">State</label>
+          </div>
+          <div class="input-field col s4">
+            <i class="material-icons prefix">zip</i>
+            <input name="zip" id="zip" type="text" [(ngModel)]="user.zip_code" class="validate" required>
+            <label for="zip">Zip</label>
+          </div>
+          <div class="input-field col s4">
+            <i class="material-icons prefix">credit_card</i>
+            <input name="ccnum" id="ccnum" type="text" placeholder='4222222222222222' [(ngModel)]="subscription.card_number" class="validate" required>
+            <label for="ccnum">Credit Card Number</label>
+          </div>
+          <div class="input-field col s2">
+            <i class="material-icons prefix"></i>
+            <input name="ccyr" id="ccyr" type="text" placeholder='16' [(ngModel)]="subscription.expiration_year" class="validate" required>
+            <label for="ccyr">Expiration Yr</label>
+          </div>
+          <div class="input-field col s2">
+            <i class="material-icons prefix"></i>
+            <input name="ccmo" id="ccmo" type="text" placeholder='01' [(ngModel)]="subscription.expiration_month" class="validate" required>
+            <label for="ccmo">Expiration Mo</label>
+          </div>
+          <div class="input-field col s2">
+            <i class="material-icons prefix"></i>
+            <input name="ccv" id="ccv" type="text" placeholder='123' [(ngModel)]="subscription.cvv" class="validate" required>
+            <label for="ccv">CCV</label>
+          </div>
+          <div class="input-field col s4">
+            <i class="material-icons prefix"></i>
+            <select materialize="material_select" id="subscriptionName" [(ngModel)]="subscription.subscription_name"  name="subscriptionName">
+              <option [value]="" disabled selected>Select a Tier</option>
+              <option [value]="basic">Basic $5</option>
+              <option [value]="advanced">Advanced $9</option>
+              <option [value]="professional">Professional $14</option>
+            </select>
+          </div>
+          <div class="col s12" *ngIf='hasErrors' >
+            <span class='errors'>
+              <i class="material-icons prefix">warning</i>
+              <p>{{errors}}</p>
+            </span>
+          </div>
+          <div class="input-field col s12">
+            <button type="submit" class="waves-effect waves-light btn cxo-btn-primary">Start Trial</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

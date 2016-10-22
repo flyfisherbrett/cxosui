@@ -4,12 +4,11 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class RegisterService {
-  subscriptions = environment.apiEndpoint + 'api/subscriptions';
-
+  
   constructor (private http: Http){}
 
   create (user, subscription) {
     let subscriptionParams = { user: user, subscription: subscription };
-    return this.http.post(this.subscriptions, subscriptionParams);
+    return this.http.post(environment.apiEndpoint + 'api/subscriptions', subscriptionParams);
   }
 }

@@ -1,0 +1,7 @@
+span.errors {
+  color: #600000;
+}
+
+span.errors p {
+  display: inline-block;
+}
