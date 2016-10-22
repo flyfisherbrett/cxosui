@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { SessionService } from '../session/session.service';
 import { ArApService } from './ar-ap.service';
 import { Company } from '../company';
@@ -14,12 +14,12 @@ import { Router } from '@angular/router';
 })
 
 export class ArApComponent{
-    company: Company;
+    @Input() cash: any;
+    @Input() company: {};
     customers = [];
     vendors = [];
     apTotal = 0;
     arTotal = 0;
-    cash: any;
     currentBalance: Number;
     oneWeekBalance: Number;
 
@@ -30,32 +30,25 @@ export class ArApComponent{
       private router: Router,
       private sessionService: SessionService)
       {
-      this.company = this.sessionService.getCompany();
-      this.checkUserRole();
-      this.getData(this.company.id);
-      this.getCash();
-      this.sessionService.companySwitch.subscribe(c => {
-          this.company = c;
-          this.checkUserRole();
-      });
-
+        this.init();
     }
 
+    init(){
+      this.getCash();
+      if(this.company){
+        this.getData(this.company.id);
+      }
+    }
 
-    checkUserRole() {
-      if (this.company.role !== 'admin') { this.router.navigate(['/profile']); }
+    ngOnChanges() {
+      this.init()
     }
 
     getCash(){
-      this.dashboardService.cashFlow(this.company.id)
-        .subscribe(res => {
-          this.cash = res.json().data;
-
-          this.currentBalance = this.cash.actual[this.cash.actual.length - 1][1];
-          this.oneWeekBalance = this.cash.total.data[6][1];
-        }, err => {
-          this.errorService.handle(err);
-        });
+      if(this.cash) {
+        this.currentBalance = this.cash.actual[this.cash.actual.length - 1][1];
+        this.oneWeekBalance = this.cash.total.data[6][1];
+      }
     }
 
     getData(id) {
