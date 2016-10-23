@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 
 export class ArApComponent{
     @Input() cash: any;
-    @Input() company: {};
+    @Input() company: Company;
     customers = [];
     vendors = [];
     apTotal = 0;
