@@ -1,72 +1,120 @@
 <div class="row">
-	<div class="col s12 l6">
+	<div class="col s12 l8">
 		<div class="card">
 			<div class="card-content row profile-card">
 				<div class="col s12 m6">
-					<img class="circle responsive-img center-block profile-pic" src="{{ profile.picture }}" alt="profile picture">
-					<p *ngIf="uploadStatus === 'none'" class="center-align"><a (click)="uploadStatus = 'show'" class="btn cxo-btn-primary">Change Picture</a></p>
+					<div class="pic-container">
+						<img class="circle responsive-img center-block profile-pic" src="{{ profile.picture }}" alt="profile picture">
+					</div>
+					<p *ngIf="uploadStatus === 'none' && passwordChangeStatus === 'none'" class="center-align"><a (click)="uploadStatus = 'show'" class="btn grey">Change Picture</a></p>
 				</div>
 				<div class="col s12 m6 right-align employee-traits">
-					<h5>{{ profile.first_name }} {{ profile.last_name }}</h5>
-					<p>{{ profile.title }}</p>
-					<p>role: {{ profile.role }}</p>
+					<div class="traits-display">
+						<h5>{{ profile.first_name }} {{ profile.last_name }}</h5>
+						<p>{{ profile.title }}</p>
+						<p>Role: {{ profile.role | uppercase }}</p>
+					</div>
+					<div *ngIf="passwordChangeStatus === 'none' && uploadStatus === 'none'" class="pass-link">
+						<a (click)="passwordChangeStatus = 'show'" class="btn grey">change password</a>
+					</div>
 				</div>
-				<div *ngIf="uploadStatus === 'show'" class="col s12">
-					<form action="">
-						<div class="file-field input-field">
-							<div class="btn cxo-btn-primary">
-								<span>Select File</span>
-								<input (change)="uploadPicture($event)" type="file">
+				<div *ngIf="uploadStatus === 'show'">
+					<div class="col s11">
+						<form action="">
+							<div class="file-field input-field">
+								<div class="btn cxo-btn-primary">
+									<span>Select File</span>
+									<input (change)="uploadPicture($event)" type="file">
+								</div>
+								<div class="file-path-wrapper">
+									<input class="file-path validate" type="text" placeholder="Choose an image to upload">
+								</div>
 							</div>
-							<div class="file-path-wrapper">
-								<input class="file-path validate" type="text" placeholder="Choose an image to upload">
-							</div>
-						</div>
-					</form>
+						</form>
+					</div>
+					<div class="col s1">
+						<i (click)="uploadStatus = 'none'" class="material-icons right pass-link">close</i>
+					</div>
 				</div>
+
 				<div *ngIf="uploadStatus === 'uploading'" class="progress col s12">
 					<div class="indeterminate"></div>
+				</div>
+
+
+				<div *ngIf="passwordChangeStatus === 'show'" class="col s12">
+					<i (click)="passwordChangeStatus = 'none'" class="material-icons md-18 right pass-link">close</i>
+					<span class="card-title">Change Password</span>
+
+					<form (submit)="changePassword()">
+
+						<div class="input-field form-group">
+							<label for="oldPassword">Old Password</label>
+							<input class="form-control" type="text" id="oldPassword" required>
+						</div>
+
+						<div class="input-field form-group">
+							<label for="newPassword">New Password</label>
+							<input class="form-control" type="text" id="newPassword" required>
+						</div>
+
+						<div class="input-field form-group">
+							<label for="newPasswordConfirm">Confirm New Password</label>
+							<input class="form-control" type="text" id="newPasswordConfirm" required>
+						</div>
+
+						<button type="submit" class="waves-effect waves-light btn btn-cxo-primary right password-submit">Change Password</button>
+
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
+
+
+
+
+
+
+
 </div>
 
-<div class="row">
-	<div class="col s12 m6 l4">
-		<div class="input-field form-group">
-			<label for="firstName" [class.active]="profile.first_name">First Name</label>
-			<input class="form-control" type="text" id="firstName" required [(ngModel)]="profile.first_name">
+<form (submit)="saveChanges()">
+	<div class="row">
+		<div class="col s12 m6 l4">
+			<div class="input-field form-group">
+				<label for="firstName" [class.active]="profile.first_name">First Name</label>
+				<input class="form-control" name="firstName" type="text" id="firstName" required [(ngModel)]="profile.first_name">
 
-		</div>
-		<div class="input-field form-group">
-			<label for="lastName" [class.active]="profile.last_name">Last Name</label>
-			<input class="form-control" type="text" id="lastName" required [(ngModel)]="profile.last_name">
+			</div>
+			<div class="input-field form-group">
+				<label for="lastName" [class.active]="profile.last_name">Last Name</label>
+				<input class="form-control" name="lastName" type="text" id="lastName" required [(ngModel)]="profile.last_name">
 
-		</div>
-		<div class="input-field form-group">
-			<label for="primaryEmail" [class.active]="profile.primary_email">Primary Email</label>
-			<input class="form-control" type="text" id="primaryEmail" required [(ngModel)]="profile.primary_email">
+			</div>
+			<div class="input-field form-group">
+				<label for="primaryEmail" [class.active]="profile.primary_email">Primary Email</label>
+				<input class="form-control" name="email" type="text" id="primaryEmail" required [(ngModel)]="profile.primary_email">
 
-		</div>
-		<div class="input-field form-group">
-			<label for="secondaryEmail" [class.active]="profile.secondary_email">Secondary Email</label>
-			<input class="form-control" type="text" id="secondaryEmail" required [(ngModel)]="profile.secondary_email">
+			</div>
+			<div class="input-field form-group">
+				<label for="secondaryEmail" [class.active]="profile.secondary_email">Secondary Email</label>
+				<input class="form-control" name="secondaryEmail" type="text" id="secondaryEmail" [(ngModel)]="profile.secondary_email">
 
+			</div>
 		</div>
-	</div>
-	<div class="col s12 m6 l4">
-		<div class="input-field form-group">
-			<label for="title" [class.active]="profile.title">Title</label>
-			<input class="form-control" type="text" id="title" required [(ngModel)]="profile.title">
+		<div class="col s12 m6 l4">
+			<div class="input-field form-group">
+				<label for="title" [class.active]="profile.title">Title</label>
+				<input class="form-control" name="title" type="text" id="title" [(ngModel)]="profile.title">
 
-		</div>
-		<div class="input-field form-group">
-			<label for="role" [class.active]="profile.role">Role</label>
-			<input disabled class="form-control" type="text" id="role" required [(ngModel)]="profile.role">
+			</div>
+			<div class="input-field form-group">
+				<label for="role" [class.active]="profile.role">Role</label>
+				<input disabled class="form-control" name="role" type="text" id="role" required [(ngModel)]="profile.role">
 
-		</div>
-		<!--<div class="input-field form-group">
+			</div>
+			<!--<div class="input-field form-group">
             <label for="payType" [class.active]="profile.pay_type">Pay Type</label>
 			<input class="form-control" type="text" id="payType" required [(ngModel)]="profile.pay_type">
 
@@ -76,48 +124,16 @@
             <input class="form-control" type="text" id="classification" required [(ngModel)]="profile.classification">
         </div>
         ^^ will reintroduce when these fields matter -->
-	</div>
-</div>
-
-<div class="row">
-
-	<div *ngIf="passwordChangeStatus === 'none'" class="col s12 l6 pass-link">
-		<a (click)="passwordChangeStatus = 'show'" class="change-password">change password</a>
-	</div>
-
-	<div *ngIf="passwordChangeStatus === 'show'" class="card col s12 l6">
-		<div class="card-content">
-			<i (click)="passwordChangeStatus = 'none'" class="material-icons md-18 right pass-link">close</i>
-
-			<span class="card-title">Change Password</span>
-
-			<form action="">
-
-				<div class="input-field form-group">
-					<label for="oldPassword">Old Password</label>
-					<input class="form-control" type="text" id="oldPassword" required>
-				</div>
-
-				<div class="input-field form-group">
-					<label for="newPassword">New Password</label>
-					<input class="form-control" type="text" id="newPassword" required>
-				</div>
-
-				<div class="input-field form-group">
-					<label for="newPasswordConfirm">Confirm New Password</label>
-					<input class="form-control" type="text" id="newPasswordConfirm" required>
-				</div>
-
-				<button type="submit" class="waves-effect waves-light btn btn-cxo-primary right password-submit">Change Password</button>
-
-			</form>
 		</div>
 	</div>
-</div>
 
-<div class="row">
-	<div class="col s12">
-		<a (click)="saveChanges()" class="waves-effect waves-light btn cxo-btn-primary">Save Changes</a>
-		<a (click)="show()" class="waves-effect waves-light btn cxo-btn-primary">Revert Changes</a>
+
+
+	<div class="row">
+		<div class="col s12">
+			<a (click)="saveChanges()" class="waves-effect waves-light btn cxo-btn-primary">Save Changes</a>
+			<a (click)="show()" class="waves-effect waves-light btn grey">Revert Changes</a>
+		</div>
 	</div>
-</div>
+
+</form>

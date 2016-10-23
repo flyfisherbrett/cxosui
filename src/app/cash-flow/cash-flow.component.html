@@ -19,7 +19,12 @@
 								<p class="center-align"><input type="checkbox" id="bill-{{bill.id}}" [(ngModel)]="bill.include"><label [attr.for]="'bill-' + bill.id"></label></p>
 							</div>
 							<div class="col s3"><input class="mod-input" type="number" [(ngModel)]="bill.total"></div>
-							<div class="col s4"><input class="mod-input" type="date" [(ngModel)]="bill.date"></div>
+							<div class="col s4"><input 	materialize="pickadate" 
+														[materializeParams]="[{format:'yyyy-mm-dd'}]" 
+														class="mod-input datepicker"
+														type="date" 
+														[(ngModel)]="bill.date">
+							</div>
 						</div>
 					</div>
 				</div>
@@ -40,17 +45,39 @@
 								</p>
 							</div>
 							<div class="col s3"><input class="mod-input" type="number" [(ngModel)]="invoice.total"></div>
-							<div class="col s4"><input class="mod-input" type="date" [(ngModel)]="invoice.date"></div>
+							<div class="col s4"><input 	materialize="pickadate" 
+														[materializeParams]="[{format:'yyyy-mm-dd'}]" 
+														class="mod-input datepicker" 
+														type="date"
+														[(ngModel)]="invoice.date">
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="card-action">
-			<a *ngIf="expansion === 'contracted'" href="" (click)="expand($event)" class="mod-button">Adjust Projection</a>
-			<a *ngIf="expansion === 'expanded'" href="" (click)="contract($event)" class="mod-button">Hide Modifiers</a>
-			<a *ngIf="expansion === 'expanded'" (click)="createProjection()" class="mod-button">Update Projection</a>
-			<a *ngIf="expansion === 'expanded'" (click)="prepareCashFlowData()" class="mod-button">Reset</a>
+			<a *ngIf="expansion === 'contracted'" href="" (click)="expand($event)" class="btn grey">Adjust Projection</a>
+			<a *ngIf="expansion === 'expanded'" (click)="createProjection()" class="btn grey">Update Graph</a>
+			<a *ngIf="expansion === 'expanded'" (click)="showPlan($event)" class="btn grey">Get My Plan</a>
+			<a *ngIf="expansion === 'expanded'" (click)="prepareCashFlowData()" class="btn grey">Reset</a>
+			<a *ngIf="expansion === 'expanded'" href="" (click)="contract($event)" class="btn grey">Hide Modifiers</a>
 		</div>
+	</div>
+</div>
+
+<div class="modal modal-fixed-footer" id="modal-plan">
+	<div class="modal-content">
+		<span class="right"><i class="material-icons md-18 modal-close">close</i></span>
+		<div id="print-content">
+			<h5>Planned Transactions - {{ today() }}</h5>
+			<div *ngFor="let day of plan">
+				<p><strong><u>{{ day.date }}</u></strong></p>
+				<p *ngFor="let line of day.instructions">{{ line }}</p>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<a (click)="print()" class="left btn grey plan-print">Print / Save</a>
 	</div>
 </div>

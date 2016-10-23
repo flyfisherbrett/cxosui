@@ -13,6 +13,14 @@ body {
     background-color: #3fb992;
 }
 
+.cxo-btn-secondary {
+    background-color: #2a8f99;
+}
+
+.cxo-btn-secondary:hover {
+    background-color: #3fb992;
+}
+
 .no-margin {
     margin: 0;
 }
