@@ -6,17 +6,17 @@ import { BenchmarksComponent } from './benchmarks/benchmarks.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { EmployeesComponent } from './employees/employees.component';
+import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
+import { EulaComponent } from './footer/eula.component';
+import { SupportComponent } from './footer/support.component';
+import { PrivacyComponent } from './footer/privacy.component';
 
-
-// import { LoginComponent } from './login/login.component';
-// import { DashboardComponent } from './dashboard/dashboard.component';
-// import { NotFoundComponent } from './not-found/not-found.component';
 
 const appRoutes: Routes = [
     {
         path: '',
-        component: LoginComponent
+        component: HomeComponent
     },
     {
         path: 'login',
@@ -41,6 +41,18 @@ const appRoutes: Routes = [
     {
         path: 'settings',
         component: SettingsComponent
+    },
+    {
+        path: 'eula',
+        component: EulaComponent
+    },
+    {
+        path: 'support',
+        component: SupportComponent
+    },
+    {
+        path: 'privacy_policy',
+        component: PrivacyComponent
     },
     {
         path: '**',

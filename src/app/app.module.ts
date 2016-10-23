@@ -12,9 +12,12 @@ import { ErrorService } from './error/error.service';
 import { ModalService } from './modal/modal.service';
 import { SessionService } from './session/session.service';
 
-import { FooterComponent } from './footer/footer.component';
-import { SideNavComponent } from './side-nav/side-nav.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
+import { FooterComponent } from './footer/footer.component';
+import { EulaComponent } from './footer/eula.component';
+import { PrivacyComponent } from './footer/privacy.component';
+import { SupportComponent } from './footer/support.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
 
 import { ArApComponent } from './ar-ap/ar-ap.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -27,6 +30,7 @@ import { BenchmarksComponent } from './benchmarks/benchmarks.component';
 import { BenchmarkComponent } from './benchmarks/benchmark/benchmark.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ModalComponent } from './modal/modal.component';
 
@@ -52,7 +56,11 @@ import { ModalComponent } from './modal/modal.component';
     SettingsComponent,
     ExpByCatComponent,
     ModalComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    HomeComponent,
+    EulaComponent,
+    SupportComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,

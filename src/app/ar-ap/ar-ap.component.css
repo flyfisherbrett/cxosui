@@ -1,0 +1,11 @@
+span.owe-pane > h5 {
+  display: inline-block;
+  margin-top: 0px;
+}
+
+span.owe-pane > a {
+  padding-left: 1em;
+  color: #075488;
+  font-weight: bold;
+  background: transparent;
+}
