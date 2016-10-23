@@ -1,9 +1,11 @@
 <div class="row">
-	<div class="col s12 l6">
+	<div class="col s12 l8">
 		<div class="card">
 			<div class="card-content row profile-card">
 				<div class="col s12 m6">
-					<img class="circle responsive-img center-block profile-pic" src="{{ profile.picture }}" alt="profile picture">
+					<div class="pic-container">
+						<img class="circle responsive-img center-block profile-pic" src="{{ profile.picture }}" alt="profile picture">
+					</div>
 					<p *ngIf="uploadStatus === 'none' && passwordChangeStatus === 'none'" class="center-align"><a (click)="uploadStatus = 'show'" class="btn grey">Change Picture</a></p>
 				</div>
 				<div class="col s12 m6 right-align employee-traits">
@@ -130,7 +132,7 @@
 	<div class="row">
 		<div class="col s12">
 			<a (click)="saveChanges()" class="waves-effect waves-light btn cxo-btn-primary">Save Changes</a>
-			<a (click)="show()" class="waves-effect waves-light btn <cxo-btn-secondary></cxo-btn-secondary>">Revert Changes</a>
+			<a (click)="show()" class="waves-effect waves-light btn grey">Revert Changes</a>
 		</div>
 	</div>
 

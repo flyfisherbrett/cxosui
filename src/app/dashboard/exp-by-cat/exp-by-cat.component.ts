@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 declare var $;
 
 @Component({
@@ -6,7 +6,7 @@ declare var $;
     templateUrl: './exp-by-cat.component.html',
     styleUrls: ['./exp-by-cat.component.css']
 })
-export class ExpByCatComponent implements OnChanges {
+export class ExpByCatComponent implements OnInit {
     @Input() data: any;
     options: {};
 
@@ -14,7 +14,7 @@ export class ExpByCatComponent implements OnChanges {
         this.drawChart();
     }
 
-    ngOnChanges() {
+    ngOnInit() {
         this.drawChart();
     }
 
@@ -44,7 +44,7 @@ export class ExpByCatComponent implements OnChanges {
         // this.options =
         $('#ebc-chart').highcharts({
             colorAxis: {
-                minColor: '#FFFFFF',
+                minColor: '#ffffff',
                 maxColor: '#000000'
             },
             series: [{
@@ -81,7 +81,7 @@ export class ExpByCatComponent implements OnChanges {
                 }]
             }],
             title: {
-                text: 'Highcharts Treemap'
+                text: ''
             }
         });
     }

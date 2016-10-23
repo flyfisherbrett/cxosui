@@ -3,6 +3,10 @@
     margin-bottom: 15px;
 }
 
+.pic-container {
+    height: 215px;
+}
+
 .pass-link:hover {
     cursor: pointer;
 }
@@ -21,4 +25,8 @@
 
 .traits-display {
     height: 188px;
+}
+
+.btn {
+    white-space: nowrap;
 }

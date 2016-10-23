@@ -51,17 +51,6 @@
     visibility: hidden;
 }
 
-
-@media print {
-    body * {
-        visibility:hidden;
-    }
-    .print, .print * {
-        visibility:visible;
-    }
-    #printSection {
-        position:absolute;
-        left:0;
-        top:0;
-    }
+.plan-print {
+    margin-right: 15px;
 }
