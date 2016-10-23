@@ -7,7 +7,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { HomeComponent } from './home/home.component';
-
+import { SettingsComponent } from './settings/settings.component';
 
 // import { LoginComponent } from './login/login.component';
 // import { DashboardComponent } from './dashboard/dashboard.component';
@@ -21,6 +21,10 @@ const appRoutes: Routes = [
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+         path: 'settings',
+        component: SettingsComponent
     },
     {
         path: 'cash_flow',
