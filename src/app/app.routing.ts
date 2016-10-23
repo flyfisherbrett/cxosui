@@ -12,7 +12,6 @@ import { EulaComponent } from './footer/eula.component';
 import { SupportComponent } from './footer/support.component';
 import { PrivacyComponent } from './footer/privacy.component';
 
-
 const appRoutes: Routes = [
     {
         path: '',
@@ -21,6 +20,10 @@ const appRoutes: Routes = [
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+         path: 'settings',
+        component: SettingsComponent
     },
     {
         path: 'cash_flow',
