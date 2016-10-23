@@ -32,6 +32,7 @@ export class AppComponent {
       this.user = this.sessionService.getUser() || {};
       this.companies = this.sessionService.getCompanies();
       this.company = this.sessionService.getCompany();
+      this.loggedIn = true;
     }
 
     this.router.events.subscribe(event => {
