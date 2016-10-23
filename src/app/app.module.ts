@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 
 import { SessionService } from './session/session.service';
 import { ModalService } from './modal/modal.service';
-
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
@@ -26,10 +25,10 @@ import { BenchmarkComponent } from './benchmarks/benchmark/benchmark.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ErrorService } from './error/error.service';
+import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ExpByCatComponent } from './dashboard/exp-by-cat/exp-by-cat.component';
 import { ModalComponent } from './modal/modal.component';
-
 
 // import { EmployeesModule } from './employees/employees.module';
 
@@ -53,7 +52,8 @@ import { ModalComponent } from './modal/modal.component';
     SettingsComponent,
     ExpByCatComponent,
     ModalComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

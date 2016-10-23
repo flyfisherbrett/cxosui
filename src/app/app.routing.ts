@@ -6,7 +6,7 @@ import { BenchmarksComponent } from './benchmarks/benchmarks.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { EmployeesComponent } from './employees/employees.component';
-import { SettingsComponent } from './settings/settings.component';
+import { HomeComponent } from './home/home.component';
 
 
 // import { LoginComponent } from './login/login.component';
@@ -16,7 +16,7 @@ import { SettingsComponent } from './settings/settings.component';
 const appRoutes: Routes = [
     {
         path: '',
-        component: LoginComponent
+        component: HomeComponent
     },
     {
         path: 'login',
@@ -37,10 +37,6 @@ const appRoutes: Routes = [
     {
         path: 'profile',
         component: ProfileComponent
-    },
-    {
-        path: 'settings',
-        component: SettingsComponent
     },
     {
         path: '**',
