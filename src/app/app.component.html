@@ -11,14 +11,12 @@
     (logout)="logout()"></app-side-nav>
   </div>
 
-  <div id="content-window" [class.side-nav-present]="sideNavExpanded">
+  <div id="content-window" [class.side-nav-present]="sideNavExpanded && !isHome">
     <router-outlet></router-outlet>
   </div>
 </div>
 
-<div id="footer" [class.side-nav-present]="sideNavExpanded" *ngIf="!isHome">
-  <app-footer [sideNavExpanded]="sideNavExpanded"></app-footer>
-</div>
+
 <app-modal [modalHeader]="modalHeader" [modalBody]="modalBody"></app-modal>
 
 <div class="modal" id="modal-add-company">
@@ -30,5 +28,9 @@
   <div id="modal-footer-content" class="modal-footer">
     <a class="modal-action modal-close waves-effect waves-green btn-flat">Connect To QuickBooks</a>
   </div>
+</div>
+
+<div id="footer" [class.side-nav-present]="sideNavExpanded" *ngIf="!isHome">
+  <app-footer [sideNavExpanded]="sideNavExpanded"></app-footer>
 </div>
 <!--</div>-->
