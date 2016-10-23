@@ -61,11 +61,13 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-  setCode(code) {
-    this.extendedCompany['naics_code'] = code;
+  setCode(e, c) {
+    console.log(c);
   }
 
-  addUser() {}
+  addUser(e) {
+    console.log(e);
+  }
 
   filterCodes() {
     if (this.searchText) {

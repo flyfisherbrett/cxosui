@@ -2,15 +2,21 @@
 	<h5>Settings for {{ company.name }}</h5>
 </div>
 
-<div class="col s12 m6 l4 industry-codes">
+<div class="col s12 m6 industry-codes">
 	<div class="card">
 		<div class="card-content">
 
 			<span class="card-title">Industry Code - NAICS</span>
-			<form action="setCode()">
+			<form (submit)="setCode($event, code.value)">
 				<div class="input-field form-group">
 					<label for="naics" [class.active]="extendedCompany.naics_code">NAICS Code</label>
-					<input class="form-control" type="text" id="naics" name="code" required [(ngModel)]="extendedCompany.naics_code">
+					<input 	class="form-control"
+							#code 
+							type="text" 
+							id="naics" 
+							name="code" 
+							required 
+							[(ngModel)]="extendedCompany.naics_code">
 				</div>
 
 				<div class="input-field code-search">
@@ -34,23 +40,23 @@
 </div>
 
 
-<div class="col s12 m6 l4 new-user">
+<div class="col s12 m6 new-user">
 	<div class="card">
 		<div class="card-content">
 
 			<span class="card-title">Add a System User</span>
-			<form action="addUser()">
+			<form (submit)="addUser(email.value)">
 				<div class="input-field form-group">
 					<label for="firstName">First Name</label>
-					<input class="form-control" type="text" name="firstName" id="firstName" required>
+					<input class="form-control" #firstName type="text" name="firstName" id="firstName" required>
 				</div>
 				<div class="input-field form-group">
 					<label for="lastName">Last Name</label>
-					<input class="form-control" type="text" name="lastName" id="lastName" required>
+					<input class="form-control" #lastName type="text" name="lastName" id="lastName" required>
 				</div>
 				<div class="input-field form-group">
 					<label for="email">Email</label>
-					<input class="form-control validate" type="email" name="email" id="email" required>
+					<input class="form-control validate" #email type="email" name="email" id="email" required>
 				</div>
 				<button type="submit" class="waves-effect waves-light btn cxo-btn-primary">create user</button>
 
@@ -59,12 +65,18 @@
 	</div>
 </div>
 
-<div class="col s12 m6 l4 pay-period">
+<!--<div class="col s12 m6 l4 pay-period">
 	<div class="card">
 		<div class="card-content">
 
 			<span class="card-title">Set Pay Period</span>
+			<div class="input-field">
+				<select name="" id="" class="browser-default">
+					<option value="">today</option>
+					<option value="">tommorow</option>
+				</select>
+			</div>
 
 		</div>
 	</div>
-</div>
+</div>-->

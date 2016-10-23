@@ -3,10 +3,6 @@
     margin-bottom: 15px;
 }
 
-.change-password {
-    color: #1e7da9;
-}
-
 .pass-link:hover {
     cursor: pointer;
 }
@@ -21,4 +17,8 @@
 
 .password-submit {
     margin: 15px 0px;
+}
+
+.traits-display {
+    height: 188px;
 }
