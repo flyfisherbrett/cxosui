@@ -1,3 +1,4 @@
+<div class="row">
 <div class="col s12">
 	<h5>Settings for {{ company.name }}</h5>
 </div>
@@ -7,7 +8,7 @@
 		<div class="card-content">
 
 			<span class="card-title">Industry Code - NAICS</span>
-			<form (submit)="setCode($event, code.value)">
+			<form (submit)="saveCode()">
 				<div class="input-field form-group">
 					<label for="naics" [class.active]="extendedCompany.naics_code">NAICS Code</label>
 					<input 	class="form-control"
@@ -65,6 +66,7 @@
 	</div>
 </div>
 
+</div>
 <!--<div class="col s12 m6 l4 pay-period">
 	<div class="card">
 		<div class="card-content">
