@@ -2,7 +2,7 @@
   <div class="col s3">
     <p>Who I Owe</p>
     <span ng-init='viewAP = false' class="owe-pane">
-      <h5>{{ apTotal | currency:'USD':true:'1.2-2' }}</h5>
+      <h5 class="debt">{{ apTotal | currency:'USD':true:'1.2-2' }}</h5>
       <a *ngIf='!viewAP' (click)="viewAP = true" class="btn grey btn-small">Show Details</a>
       <a *ngIf='viewAP' (click)="viewAP = false" class="btn grey btn-small">Hide Details</a>
     </span>
@@ -26,7 +26,7 @@
   <div class="col s3">
     <p>Who Owes Me</p>
     <span ng-init='viewAR = false' class="owe-pane">
-      <h5>{{ arTotal | currency:'USD':true:'1.2-2' }}</h5>
+      <h5 class="income">{{ arTotal | currency:'USD':true:'1.2-2' }}</h5>
       <a *ngIf='!viewAR' (click)="viewAR = true" class="btn grey btn-small">Show Details</a>
       <a *ngIf='viewAR' (click)="viewAR = false" class="btn grey btn-small">Hide Details</a>
     </span>

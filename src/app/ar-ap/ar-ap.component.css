@@ -30,3 +30,11 @@ span.owe-pane > a {
 .ribbon {
   min-height: 100px;
 }
+
+.debt{
+  color: #f45942;
+}
+
+.income {
+  color: #259f78;
+}
