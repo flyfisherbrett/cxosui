@@ -1,17 +1,51 @@
 <div class="row">
   <div class="col s3">
     <p>Who I Owe</p>
-    <span class="owe-pane">
+    <span ng-init='viewAP = false' class="owe-pane">
       <h5>{{ apTotal | currency:'USD':true:'1.2-2' }}</h5>
-      <a>Show Details</a>
+      <a [hidden]='viewAP' (click)="viewAP = true">Show Details</a>
+      <a [hidden]='!viewAP' (click)="viewAP = false">Hide Details</a>
     </span>
+    <div class="payables-details" [hidden]="!viewAP">
+      <table class="striped center" id='details'>
+        <thead>
+          <tr>
+            <th>Customer</th>
+            <th>Amount Due</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of customers">
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.balance | currency:'USD':true:'1.2-2' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
   <div class="col s3">
     <p>Who Owes Me</p>
-    <span class="owe-pane">
+    <span ng-init='viewAR = false' class="owe-pane">
       <h5>{{ arTotal | currency:'USD':true:'1.2-2' }}</h5>
-      <a>Show Details</a>
+      <a [hidden]='viewAR' (click)="viewAR = true">Show Details</a>
+      <a [hidden]='!viewAR' (click)="viewAR = false">Hide Details</a>
     </span>
+    <div class="payables-details" [hidden]="!viewAR">
+      <table class="striped center" id='details'>
+        <thead>
+          <tr>
+            <th>Vendor</th>
+            <th>Amount Due</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let vendor of vendors">
+            <td>{{ vendor.name }}</td>
+            <td>{{ vendor.balance | currency:'USD':true:'1.2-2' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
   <div class="col s3">
     <p>Current Cash</p>

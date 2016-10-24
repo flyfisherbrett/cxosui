@@ -1,6 +1,6 @@
 .ribbon-content {
     margin-top: 25px;
-    height: 200px;
+    max-height: 365px;
 }
 
 text:hover {
