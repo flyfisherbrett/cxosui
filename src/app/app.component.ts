@@ -30,7 +30,7 @@ export class AppComponent {
     this.router.events
       .subscribe((event: NavigationEnd) => {
         if (event instanceof NavigationEnd) {
-          this.isHome = event.url === '/';
+          this.isHome = event.url === '/' || event.url === '/#what-is-cxo' || event.url === '/#finad' || event.url === '/#why-cxo' || event.url === '/#pri' || event.url === '/#ctc';
           (this.isHome) ? this.switchToBootstrap() : this.switchToMaterial();
         }
       });
