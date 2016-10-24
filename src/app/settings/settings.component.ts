@@ -5,6 +5,7 @@ import { ErrorService } from '../error/error.service';
 import { Router } from '@angular/router';
 import { Company } from '../company';
 import { User } from '../user';
+import { ModalService } from '../modal/modal.service';
 
 @Component({
   selector: 'app-settings',
@@ -25,7 +26,8 @@ export class SettingsComponent implements OnInit {
     private sessionService: SessionService,
     private router: Router,
     private settingsService: SettingsService,
-    private errorService: ErrorService) {
+    private errorService: ErrorService,
+    private modalService: ModalService) {
 
     if (!this.sessionService.isLoggedIn()) {
       this.router.navigate(['/']);
@@ -65,10 +67,6 @@ export class SettingsComponent implements OnInit {
     console.log(c);
   }
 
-  addUser(e) {
-    console.log(e);
-  }
-
   filterCodes() {
     if (this.searchText) {
       this.filteredCodes = this.codes.filter(code => {
@@ -81,5 +79,21 @@ export class SettingsComponent implements OnInit {
     if (this.company.role !== 'admin') { this.router.navigate(['/profile']); }
   }
 
+  addUser(firstName, lastName, email) {
+    let user = {
+      first_name: firstName,
+      last_name: lastName,
+      email: email
+    }
+    this.settingsService.createSystemUser(this.company.id, user)
+      .subscribe(res => {
+        this.modalService.openModal(
+          'User Created',
+          '<p>A System Admin User has been created.</p>',
+          null);
+      }, err => {
+        this.modalService.openModal('Creation Failed', '<p>Failed to create User</p>', null);
+      })
+  }
 
 }
