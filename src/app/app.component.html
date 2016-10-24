@@ -1,5 +1,5 @@
 <!--<div *ngIf="!isHome">-->
-<app-top-nav *ngIf="!isHome" (sideNavChange)="toggleSideNav()"></app-top-nav>
+<app-top-nav *ngIf="!isHome" (sideNavChange)="toggleSideNav()" (logout)="logout()" [loggedIn]="loggedIn" [sideNavExpanded]="sideNavExpanded"></app-top-nav>
 
 <div class="row">
   <div id="sidebar" class="side-nav fixed" *ngIf="sideNavExpanded && !isHome">
