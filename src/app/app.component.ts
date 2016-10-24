@@ -35,12 +35,15 @@ export class AppComponent {
         }
       });
 
+    this.sideNavExpanded = false;
     if (this.sessionService.isLoggedIn()) {
+      this.sideNavExpanded = true;
       this.user = this.sessionService.getUser() || {};
       this.companies = this.sessionService.getCompanies();
       this.company = this.sessionService.getCompany();
       this.loggedIn = true;
     }
+
 
     this.router.events.subscribe(event => {
       if (event.url === '/' || event.url === '/register') {this.sideNavExpanded = false; };
