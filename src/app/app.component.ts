@@ -23,7 +23,7 @@ export class AppComponent {
   container: any;
   boostrapStyles: any;
 
-  constructor(private sessionService: SessionService, private router: Router) {
+  constructor(private modalService: ModalService, private sessionService: SessionService, private router: Router) {
     this.boostrapStyles = $('#bootstrapStyle');
     this.materialStyles = $('style')[0];
 
