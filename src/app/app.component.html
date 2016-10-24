@@ -20,13 +20,13 @@
 
 <app-modal [modalHeader]="modalHeader" [modalBody]="modalBody"></app-modal>
 
-<div class="modal" id="modal-add-company" [appqb-connect]>
+<div class="modal" id="modal-add-company">
   <div class="modal-content">
     <span class="right"><i class="material-icons md-18 modal-close">close</i></span>
     <h4>Add a Company</h4>
     <div>You must connect to QuickBooks to add another company.</div>
   </div>
-  <div id="modal-footer-content" class="modal-footer">
+  <div id="modal-footer-content" class="modal-footer" appqb-connect>
     <a class="modal-action modal-close waves-effect waves-green btn-flat">Connect To QuickBooks</a>
   </div>
 </div>
