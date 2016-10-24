@@ -25,6 +25,7 @@ import { CashFlowComponent } from './cash-flow/cash-flow.component';
 import { CashFlowChartComponent } from './cash-flow/cash-flow-chart/cash-flow-chart.component';
 import { ExpByCatComponent } from './dashboard/exp-by-cat/exp-by-cat.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { BenchmarksComponent } from './benchmarks/benchmarks.component';
 import { BenchmarkComponent } from './benchmarks/benchmark/benchmark.component';
@@ -48,6 +49,7 @@ import { ModalComponent } from './modal/modal.component';
     CashFlowComponent,
     CashFlowChartComponent,
     LoginComponent,
+    RegisterComponent,
     ArApComponent,
     BenchmarksComponent,
     BenchmarkComponent,
