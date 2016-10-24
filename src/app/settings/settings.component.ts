@@ -63,8 +63,22 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-  setCode(e, c) {
-    console.log(c);
+  setCode(c) {
+    this.extendedCompany['naics_code'] = c;
+  }
+
+  saveCode() {
+    this.settingsService.saveCode(this.company.id, this.extendedCompany['naics_code']).subscribe(res => {
+      console.log(res.json());
+      this.modalService.openModal(
+        'Industry Code Updated',
+        '<p>The Industry code for ' + this.company.name + ' has been updated.</p>', null)
+    }, err => {
+      this.modalService.openModal(
+        'Update Failed',
+        '<p>Failed to update Industry Code for ' + this.company.name + '.</p>', null
+      );
+    });
   }
 
   filterCodes() {

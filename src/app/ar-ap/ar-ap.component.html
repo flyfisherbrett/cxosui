@@ -1,10 +1,10 @@
-<div class="row">
+<div class="row ribbon">
   <div class="col s3">
     <p>Who I Owe</p>
     <span ng-init='viewAP = false' class="owe-pane">
       <h5>{{ apTotal | currency:'USD':true:'1.2-2' }}</h5>
-      <a [hidden]='viewAP' (click)="viewAP = true">Show Details</a>
-      <a [hidden]='!viewAP' (click)="viewAP = false">Hide Details</a>
+      <a *ngIf='!viewAP' (click)="viewAP = true" class="btn grey btn-small">Show Details</a>
+      <a *ngIf='viewAP' (click)="viewAP = false" class="btn grey btn-small">Hide Details</a>
     </span>
     <div class="payables-details" [hidden]="!viewAP">
       <table class="striped center" id='details'>
@@ -27,8 +27,8 @@
     <p>Who Owes Me</p>
     <span ng-init='viewAR = false' class="owe-pane">
       <h5>{{ arTotal | currency:'USD':true:'1.2-2' }}</h5>
-      <a [hidden]='viewAR' (click)="viewAR = true">Show Details</a>
-      <a [hidden]='!viewAR' (click)="viewAR = false">Hide Details</a>
+      <a *ngIf='!viewAR' (click)="viewAR = true" class="btn grey btn-small">Show Details</a>
+      <a *ngIf='viewAR' (click)="viewAR = false" class="btn grey btn-small">Hide Details</a>
     </span>
     <div class="payables-details" [hidden]="!viewAR">
       <table class="striped center" id='details'>
@@ -55,7 +55,7 @@
     </span>
   </div>
   <div class="col s3">
-    <p>Projected Cash</p>
+    <p>Cash in 7 Days</p>
     <h5>{{ oneWeekBalance | currency:'USD':true:'1.2-2' }}</h5>
   </div>
 </div>

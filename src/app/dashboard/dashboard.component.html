@@ -1,6 +1,6 @@
 <div id="ribbon" *ngIf='data && company'>
     <div class="col s12 l12">
-        <div class="card ribbon-content">
+        <div class="ribbon-content">
             <app-ar-ap [cash]="data" [company]="company"></app-ar-ap>
         </div>
     </div>
@@ -8,11 +8,11 @@
 
 <app-cash-flow [company]="company" [data]="data"></app-cash-flow>
 
-<div class="col s12">
+<!--<div class="col s12">
     <div class="card expenses">
         <div class="card-content">
             <span class="card-title">Expenses</span>
         </div>
         <app-exp-by-cat></app-exp-by-cat>
     </div>
-</div>
+</div>-->
