@@ -74,7 +74,7 @@
             <input name="ccv" id="ccv" type="text" placeholder='123' [(ngModel)]="subscription.cvv" class="validate" required>
             <label for="ccv">CCV</label>
           </div> -->
-          <div class="input-field col s4">
+          <!-- <div class="input-field col s4">
             <i class="material-icons prefix"></i>
             <select materialize="material_select" id="subscriptionName" [(ngModel)]="user.subscription_type"  name="subscriptionName">
               <option [value]="" disabled selected>Select a Tier</option>
@@ -82,7 +82,7 @@
               <option [value]="advanced">Advanced $9</option>
               <option [value]="professional">Professional $14</option>
             </select>
-          </div>
+          </div> -->
           <div class="col s12" *ngIf='hasErrors' >
             <span class='errors'>
               <i class="material-icons prefix">warning</i>

@@ -43,7 +43,7 @@ export class AppComponent {
     }
 
     this.router.events.subscribe(event => {
-      if (event.url === '/') {this.sideNavExpanded = false; };
+      if (event.url === '/' || event.url === '/register') {this.sideNavExpanded = false; };
     });
 
     this.sessionService.companySwitch.subscribe(c => {
