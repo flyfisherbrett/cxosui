@@ -54,7 +54,7 @@
             <input name="zip" id="zip" type="text" [(ngModel)]="user.zip_code" class="validate" required>
             <label for="zip">Zip</label>
           </div>
-          <div class="input-field col s4">
+          <!-- <div class="input-field col s4">
             <i class="material-icons prefix">credit_card</i>
             <input name="ccnum" id="ccnum" type="text" placeholder='4222222222222222' [(ngModel)]="subscription.card_number" class="validate" required>
             <label for="ccnum">Credit Card Number</label>
@@ -73,10 +73,10 @@
             <i class="material-icons prefix"></i>
             <input name="ccv" id="ccv" type="text" placeholder='123' [(ngModel)]="subscription.cvv" class="validate" required>
             <label for="ccv">CCV</label>
-          </div>
+          </div> -->
           <div class="input-field col s4">
             <i class="material-icons prefix"></i>
-            <select materialize="material_select" id="subscriptionName" [(ngModel)]="subscription.subscription_name"  name="subscriptionName">
+            <select materialize="material_select" id="subscriptionName" [(ngModel)]="user.subscription_type"  name="subscriptionName">
               <option [value]="" disabled selected>Select a Tier</option>
               <option [value]="basic">Basic $5</option>
               <option [value]="advanced">Advanced $9</option>
