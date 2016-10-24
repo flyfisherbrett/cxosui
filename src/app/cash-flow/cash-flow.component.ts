@@ -1,5 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/core'; // animation requirements
+import { ModalService } from '../modal/modal.service';
+declare var $;
 
 @Component({
     selector: 'app-cash-flow',
@@ -27,6 +29,9 @@ export class CashFlowComponent implements OnChanges {
     invoices = [];
     projection = [];
     flags = [];
+    plan = [];
+
+    constructor(private modalService: ModalService) { }
 
     ngOnChanges() {
         if (this.data) {
@@ -177,4 +182,64 @@ export class CashFlowComponent implements OnChanges {
         e.preventDefault();
         this.expansion = 'contracted';
     }
+
+    showPlan(e) {
+        this.plan = this.transactionsByDate();
+        console.log(this.plan);
+        $('#modal-plan').openModal();
+    }
+
+    transactionsByDate() {
+        let debts = this.bills.filter(e => { return e.include === true; });
+        let income = this.invoices.filter(e => { return e.include === true; });
+        let groupedTransactions = debts.reduce( (coll, t) => {
+            let instruction = 'Pay $' + t.total + ' to ' + t.vendor;
+            if (coll[t.date]) {
+                coll[t.date].push(instruction);
+            } else {
+                coll[t.date] = [instruction];
+            }
+            return coll;
+        }, {});
+        groupedTransactions = income.reduce( (coll, t) => {
+            let instruction = 'Collect $' + t.total + ' from ' + t.customer_name;
+            if (coll[t.date]) {
+                coll[t.date].push(instruction);
+            } else {
+                coll[t.date] = [instruction];
+            }
+            return coll;
+        }, groupedTransactions);
+        let dates = Object.keys(groupedTransactions);
+        return this.sortModifiers(dates.map(d => {
+            return {
+                date: d,
+                instructions: groupedTransactions[d]
+            };
+        }));
+    }
+
+    print() {
+        let content = $('#print-content').html();
+        console.log(content);
+        let popupWinindow = window.open(
+            '', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+        popupWinindow.document.open();
+        popupWinindow.document.write(
+            '<html><head><link rel="stylesheet" type="text/css" href="style.css" /></head>' +
+            content +
+            '</html>');
+        popupWinindow.document.close();
+    }
+
+    today() {
+        let today = new Date();
+        return today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    }
+
+    setPicker(e) {
+        console.log(e);
+    }
 }
+
+// <body onload="window.print()/>"

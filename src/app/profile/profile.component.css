@@ -3,8 +3,8 @@
     margin-bottom: 15px;
 }
 
-.change-password {
-    color: #1e7da9;
+.pic-container {
+    height: 215px;
 }
 
 .pass-link:hover {
@@ -21,4 +21,12 @@
 
 .password-submit {
     margin: 15px 0px;
+}
+
+.traits-display {
+    height: 188px;
+}
+
+.btn {
+    white-space: nowrap;
 }

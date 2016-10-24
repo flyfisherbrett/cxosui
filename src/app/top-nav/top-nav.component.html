@@ -5,10 +5,13 @@
 			<a class="brand-logo">
 				<img id="brand-img" src="assets/CXO_logo.jpg" alt="CXO logo">
 			</a>
-            <a *ngIf="loggedIn" href="#" (click)="toggleSideNav($event)" class="left side-nav-toggle hide-on-med-and-down">
-                <i *ngIf="sideNavExpanded" class="material-icons black-text">keyboard_arrow_left</i>
-                <i *ngIf="!sideNavExpanded" class="material-icons black-text">menu</i>
-            </a>
+			<a  *ngIf="loggedIn" href="#" (click)="toggleSideNav($event)" class="left side-nav-toggle hide-on-med-and-down tooltipped"
+				data-position="right" 
+                data-delay="50" 
+                data-tooltip="Toggle Side Nav">
+				<i *ngIf="sideNavExpanded" class="material-icons black-text">keyboard_arrow_left</i>
+				<i *ngIf="!sideNavExpanded" class="material-icons black-text tooltipped">menu</i>
+			</a>
 
 			<ul *ngIf="loggedIn" class="right">
 				<li><a class="logout-btn" (click)="emitLogout($event)">Logout</a></li>

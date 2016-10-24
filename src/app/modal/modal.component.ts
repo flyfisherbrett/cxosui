@@ -41,4 +41,8 @@ export class ModalComponent {
         event.preventDefault();
         $('#modal-alert').openModal();
     }
+
+    print() {
+        console.log('print');
+    }
 }

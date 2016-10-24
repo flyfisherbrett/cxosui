@@ -50,3 +50,7 @@
 .mod-toggle {
     visibility: hidden;
 }
+
+.plan-print {
+    margin-right: 15px;
+}
