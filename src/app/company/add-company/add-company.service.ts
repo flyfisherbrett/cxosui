@@ -11,7 +11,6 @@ export class AddCompanyService {
 
   index() {
     let headers = new Headers();
-    debugger;
     headers.append('Authorization', this.sessionService.headerToken());
     return this.http.get(this.endpoint, { headers: headers });
   }
