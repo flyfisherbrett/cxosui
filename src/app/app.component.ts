@@ -4,7 +4,7 @@ import { Router, RoutesRecognized, NavigationEnd } from '@angular/router';
 import { Company } from './interfaces/company.interface';
 import { User } from './interfaces/user.interface';
 import { ModalService } from './modal/modal.service';
-declare var $, AOS;
+declare var $, AOS, intuit;
 
 @Component({
   selector: 'app-root',
@@ -19,6 +19,7 @@ export class AppComponent {
   company: Company;
   loggedIn: boolean;
   isHome: boolean = false;
+  showConnect: boolean = false
   materialStyles: any;
   container: any;
   boostrapStyles: any;
