@@ -35,6 +35,7 @@ import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ModalComponent } from './modal/modal.component';
 
+import { QbConnectDirective } from './shared/directives/qb-connect.directive';
 // ---- elements for future implementation ----
 // import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 // import { EmployeesModule } from './employees/employees.module';
@@ -62,7 +63,8 @@ import { ModalComponent } from './modal/modal.component';
     HomeComponent,
     EulaComponent,
     SupportComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    QbConnectDirective
   ],
   imports: [
     BrowserModule,
