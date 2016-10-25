@@ -15,11 +15,12 @@ export class QbConnectDirective {
   ngAfterViewInit() {
     $('#qbConnect').append('<ipp:connectToIntuit></ipp:connectToIntuit>');
     var script = document.createElement('script');
-    var userId = this.user.id;
+    var userId = String(this.user.id);
+
     script.type = 'text/javascript';
     script.src = '//js.appcenter.intuit.com/Content/IA/intuit.ipp.anywhere.js';
 
-    script.onload = function (userId) {
+    script.onload = function () {
         intuit.ipp.anywhere.setup({
         menuProxy: '/path/to/blue-dot',
         grantUrl: (environment.apiEndpoint + 'api/oauth/authenticate' + '?user_id=' + userId)

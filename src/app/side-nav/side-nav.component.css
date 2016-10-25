@@ -55,6 +55,8 @@
 .add-company {
     padding: 10px 30px;
     font-size: 12px;
+    overflow: hidden;
+    max-height: 35px;
 }
 
 .add-company:hover {
