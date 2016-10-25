@@ -40,7 +40,16 @@ export class SessionService {
   }
 
   loadSessionData(data) {
+    this.loadUser(data);
+    this.loadCompany(data);
+  }
+
+  loadUser(data) {
     localStorage.setItem('user', JSON.stringify(data.user));
+    let companies = this.processCompanyRoles(data.companies, data.employees);
+  }
+
+  loadCompany(data) {
     let companies = this.processCompanyRoles(data.companies, data.employees);
     localStorage.setItem('companies', JSON.stringify(companies));
     if (!this.sameUser(this.getCompany(), companies)) { this.changeCompany(companies[0]); }
@@ -77,7 +86,13 @@ export class SessionService {
   }
 
   getCompany() {
-    return JSON.parse(localStorage.getItem('company'));
+    let company = localStorage.getItem('company');
+
+    if (company != 'undefined') {
+      return JSON.parse(company);
+    } else  {
+      return {};
+    }
   }
 
   setCompany(id) {

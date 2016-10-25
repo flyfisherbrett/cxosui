@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="col s12 valign-wrapper">
+        <h4>Welcome to CXOSoft</h4>
+    </div>
+</div>
+<div class="row" (click)="qbConnect(event, 0)">
+  <p> To get started click the Connect to QuickBooks button. This will allow you to connect your QuickBooks company(s) with CXOSoft</p>
+  <p>If you recently connected a company, <a href='/add_company'>Refresh</a> to see your company data.</p>
+  <span id='qbConnect' appqb-connect [user]='user'></span>
+</div>

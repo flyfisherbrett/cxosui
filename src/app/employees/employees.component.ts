@@ -41,6 +41,7 @@ export class EmployeesComponent implements OnInit {
 
         this.user = this.sessionService.getUser();
         this.company = this.sessionService.getCompany();
+        this.checkCompany();
         this.checkUserRole();
 
         this.sessionService.companySwitch.subscribe(c => {
@@ -51,7 +52,8 @@ export class EmployeesComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.index();
+      this.checkCompany();
+      this.index();
     }
 
     index() {
@@ -62,6 +64,10 @@ export class EmployeesComponent implements OnInit {
         }, err => {
             this.errorService.handle(err);
         });
+    }
+
+    checkCompany() {
+      if (Object.keys(this.company).length === 0) { this.router.navigate(['/add_company']); }
     }
 
     checkUserRole() {

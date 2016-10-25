@@ -33,6 +33,7 @@ export class BenchmarksComponent implements OnInit {
     }
 
     this.company = this.sessionService.getCompany();
+    this.checkCompany();
     this.checkUserRole();
 
     this.sessionService.companySwitch.subscribe(c => {
@@ -44,6 +45,11 @@ export class BenchmarksComponent implements OnInit {
 
   ngOnInit() {
     this.getCompany();
+    this.checkCompany();
+  }
+
+  checkCompany() {
+    if (Object.keys(this.company).length === 0) { this.router.navigate(['/add_company']); }
   }
 
   checkUserRole() {

@@ -1,5 +1,6 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AddCompanyComponent } from './company/add-company/add-company.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { BenchmarksComponent } from './benchmarks/benchmarks.component';
@@ -22,6 +23,10 @@ const appRoutes: Routes = [
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+        path: 'add_company',
+        component: AddCompanyComponent
     },
     {
          path: 'settings',

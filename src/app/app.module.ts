@@ -19,6 +19,7 @@ import { PrivacyComponent } from './footer/privacy.component';
 import { SupportComponent } from './footer/support.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 
+import { AddCompanyComponent } from './company/add-company/add-company.component';
 import { ArApComponent } from './ar-ap/ar-ap.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CashFlowComponent } from './cash-flow/cash-flow.component';
@@ -43,6 +44,7 @@ import { QbConnectDirective } from './shared/directives/qb-connect.directive';
 @NgModule({
   declarations: [
     AppComponent,
+    AddCompanyComponent,
     TopNavComponent,
     FooterComponent,
     SideNavComponent,

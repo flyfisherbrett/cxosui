@@ -33,7 +33,6 @@ export class SideNavComponent {
   }
 
   emitAddCompany(e) {
-    // this.addCompany.emit();
     this.showConnect = true;
   }
 }

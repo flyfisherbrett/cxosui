@@ -38,6 +38,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.checkCompany();
     this.getCashFlowData();
   }
 
@@ -48,6 +49,11 @@ export class DashboardComponent implements OnInit {
       }, err => {
         this.errorService.handle(err);
       });
+  }
+
+  // moved to router module
+  checkCompany() {
+    if (Object.keys(this.company).length === 0) { this.router.navigate(['/add_company']); }
   }
 
   checkUserRole() {
