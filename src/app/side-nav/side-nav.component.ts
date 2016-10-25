@@ -15,6 +15,7 @@ export class SideNavComponent {
   @Input() company: Company;
   @Output() companyChange = new EventEmitter();
   @Output() addCompany = new EventEmitter();
+  showConnect: boolean = false;
 
   constructor(private sessionService: SessionService) {}
 
@@ -32,6 +33,7 @@ export class SideNavComponent {
   }
 
   emitAddCompany(e) {
-    this.addCompany.emit();
+    // this.addCompany.emit();
+    this.showConnect = true;
   }
 }

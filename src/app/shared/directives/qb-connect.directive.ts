@@ -1,5 +1,6 @@
-import { Directive, AfterViewInit } from '@angular/core';
-import { User } from '../user';
+import { Directive,Input , AfterViewInit } from '@angular/core';
+import { environment } from '../../../environments/environment';
+import { User } from '../../user';
 declare var $, intuit;
 
 @Directive({
@@ -7,18 +8,21 @@ declare var $, intuit;
 })
 
 export class QbConnectDirective {
+  @Input() user: User;
 
-  constructor() { }
+  constructor() {}
+
   ngAfterViewInit() {
-    $('#sidebar').append('<ipp:connectToIntuit></ipp:connectToIntuit>');
+    $('#qbConnect').append('<ipp:connectToIntuit></ipp:connectToIntuit>');
     var script = document.createElement('script');
+    var userId = this.user.id;
     script.type = 'text/javascript';
     script.src = '//js.appcenter.intuit.com/Content/IA/intuit.ipp.anywhere.js';
 
-    script.onload = function () {
+    script.onload = function (userId) {
         intuit.ipp.anywhere.setup({
         menuProxy: '/path/to/blue-dot',
-        grantUrl: ('api/oauth/authenticate'+ '?user_id=')
+        grantUrl: (environment.apiEndpoint + 'api/oauth/authenticate' + '?user_id=' + userId)
       });
     };
 
