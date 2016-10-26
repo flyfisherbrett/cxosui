@@ -39,6 +39,23 @@ export class SessionService {
       );
   }
 
+  createByToken(token) {
+    let creds = { token: token};
+
+    this.http.post(this.apiSession, creds)
+      .subscribe(
+      res => {
+        this.loadSessionData(res.json());
+        this.loggedIn.next(true);
+        this.router.navigate(['cash_flow']);
+      }, err => {
+        this.modalService.openModal('Invalid Credentials',
+                                    '<p>That Email and Password does not match our records.</p>',
+                                    null);
+      }
+      );
+  }
+
   loadSessionData(data) {
     this.loadUser(data);
     this.loadCompany(data);

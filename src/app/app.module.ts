@@ -25,6 +25,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CashFlowComponent } from './cash-flow/cash-flow.component';
 import { CashFlowChartComponent } from './cash-flow/cash-flow-chart/cash-flow-chart.component';
 import { ExpByCatComponent } from './dashboard/exp-by-cat/exp-by-cat.component';
+import { DirectConnectComponent } from './register/intuit/direct-connect/direct-connect.component';
+import { IntuitLandingComponent } from './register/intuit/intuit-landing/intuit-landing.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { EmployeesComponent } from './employees/employees.component';
@@ -35,8 +37,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ModalComponent } from './modal/modal.component';
+import { VerifyComponent } from './register/intuit/verify/verify.component';
 
 import { QbConnectDirective } from './shared/directives/qb-connect.directive';
+import { QbDirectConnectDirective } from './shared/directives/qb-direct-connect.directive';
 // ---- elements for future implementation ----
 // import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 // import { EmployeesModule } from './employees/employees.module';
@@ -45,12 +49,14 @@ import { QbConnectDirective } from './shared/directives/qb-connect.directive';
   declarations: [
     AppComponent,
     AddCompanyComponent,
+    DirectConnectComponent,
     TopNavComponent,
     FooterComponent,
     SideNavComponent,
     DashboardComponent,
     CashFlowComponent,
     CashFlowChartComponent,
+    IntuitLandingComponent,
     LoginComponent,
     RegisterComponent,
     ArApComponent,
@@ -66,7 +72,9 @@ import { QbConnectDirective } from './shared/directives/qb-connect.directive';
     EulaComponent,
     SupportComponent,
     PrivacyComponent,
-    QbConnectDirective
+    QbConnectDirective,
+    QbDirectConnectDirective,
+    VerifyComponent
   ],
   imports: [
     BrowserModule,
