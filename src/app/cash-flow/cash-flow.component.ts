@@ -185,7 +185,6 @@ export class CashFlowComponent implements OnChanges {
 
     showPlan(e) {
         this.plan = this.transactionsByDate();
-        console.log(this.plan);
         $('#modal-plan').openModal();
     }
 
