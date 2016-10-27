@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
         <div class="container">
             <div class="card">
                 <div class="card-content">
-                    <span class="card-title">Forgot Password</span>
+                    <span class="card-title">Forgot Your Password?</span>
                     <br />
                     <p class="instructions">
                         Enter the email address for your account and you will receive instructions to reset your password.
@@ -60,6 +60,7 @@ export class ForgotPasswordComponent {
                     'Password Reset',
                     '<p>Instructions to reset your password have been sent to ' + email + '.</p>',
                     null);
+                this.router.navigate(['/login']);
             }
         }, err => {
             this.errorService.handle(err);
