@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   data: any;
   uploadStatus = 'none';
   passwordChangeStatus = 'none';
+  passwordErrors = {};
   profile = {
     first_name: '',
     last_name: '',
@@ -70,10 +71,6 @@ export class ProfileComponent implements OnInit {
       };
     }
 
-    showPasswordChange(e) {
-      e.preventDefault();
-    }
-
     show() {
       this.profileService.show(this.company.id, this.company.employee_id).subscribe(res => {
         this.buildProfile(res.json());
@@ -98,13 +95,13 @@ export class ProfileComponent implements OnInit {
       this.updateEmployeeModel();
       this.profileService.updateProfile(this.employee.id, this.parseEmployeeForUpdate())
         .subscribe(res => {
-          this.updatedModal();
+          this.showUpdatedModal();
         }, err => {
           console.log(err);
         });
     }
 
-    updatedModal() {
+    showUpdatedModal() {
       this.modalService.openModal('Account Updated',
         '<p>Your profile settings have been updated</p>',
         null);
@@ -129,5 +126,24 @@ export class ProfileComponent implements OnInit {
       // will also need more attributes in future
     }
 
-    revertChanges() {}
+    changePassword(oldVal, newVal, confirmVal) {
+      this.profileService.updatePassword(oldVal, newVal, confirmVal, this.company.employee_id)
+        .subscribe(res => {
+          this.passwordChangeStatus = 'none';
+          this.modalService.openModal('Password Updated!', '<p>Your password has been successfully changed.</p>', null);
+        }, err => {
+          let messages = err.json().messages;
+          if (messages) {
+            this.passwordErrors = messages;
+          } else {
+            this.errorService.handle(err);
+          }
+        });
+    }
+
+    closePasswordChange() {
+      this.passwordChangeStatus = 'none';
+      this.passwordErrors = {};
+    }
+
 }

@@ -30,3 +30,9 @@
 .btn {
     white-space: nowrap;
 }
+
+.pass-error {
+    padding-bottom: 15px;
+    color: #f45942;
+    font-size: 0.75em;
+}

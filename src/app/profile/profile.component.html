@@ -43,24 +43,27 @@
 
 
 				<div *ngIf="passwordChangeStatus === 'show'" class="col s12">
-					<i (click)="passwordChangeStatus = 'none'" class="material-icons md-18 right pass-link">close</i>
+					<i (click)="closePasswordChange()" class="material-icons md-18 right pass-link">close</i>
 					<span class="card-title">Change Password</span>
 
-					<form (submit)="changePassword()">
+					<form (submit)="changePassword(old.value, new.value, confirm.value)">
 
 						<div class="input-field form-group">
-							<label for="oldPassword">Old Password</label>
-							<input class="form-control" type="text" id="oldPassword" required>
+							<label for="oldPassword">Current Password</label>
+							<input class="form-control" type="password" id="oldPassword" #old required>
+							<div *ngIf="passwordErrors.current_password" class="pass-error">{{ passwordErrors.current_password[0] }}</div>
 						</div>
 
 						<div class="input-field form-group">
 							<label for="newPassword">New Password</label>
-							<input class="form-control" type="text" id="newPassword" required>
+							<input class="form-control" type="password" id="newPassword" #new required>
+							<div *ngIf="passwordErrors.password" class="pass-error">{{ passwordErrors.password[0] }}</div>
 						</div>
 
 						<div class="input-field form-group">
 							<label for="newPasswordConfirm">Confirm New Password</label>
-							<input class="form-control" type="text" id="newPasswordConfirm" required>
+							<input class="form-control" type="password" id="newPasswordConfirm" #confirm required>
+							<div *ngIf="passwordErrors.password_confirmation" class="pass-error">{{ passwordErrors.password_confirmation[0]}}</div>
 						</div>
 
 						<button type="submit" class="waves-effect waves-light btn btn-cxo-primary right password-submit">Change Password</button>
