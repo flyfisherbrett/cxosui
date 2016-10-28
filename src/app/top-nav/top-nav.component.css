@@ -31,3 +31,11 @@ ul a:hover {
     margin-left: 100px;
     margin-top: 10px;
 }
+
+#mobile-nav-toggle {
+    margin-top: 10px;
+}
+
+#mobile-nav-toggle:hover {
+    cursor: pointer;
+}

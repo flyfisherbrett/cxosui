@@ -12,9 +12,10 @@
 				<i *ngIf="sideNavExpanded" class="material-icons black-text">keyboard_arrow_left</i>
 				<i *ngIf="!sideNavExpanded" class="material-icons black-text tooltipped">menu</i>
 			</a>
+			<i id="mobile-nav-toggle" class="left material-icons black-text hide-on-large-only" (click)="emitSidenavSlide()">menu</i>
 
 			<ul *ngIf="loggedIn" class="right">
-				<li><a class="logout-btn" (click)="emitLogout($event)">Logout</a></li>
+				<li><a class="logout-btn" (click)="emitLogout()">Logout</a></li>
 			</ul>
 
 		</div>

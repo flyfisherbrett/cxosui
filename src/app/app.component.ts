@@ -121,4 +121,8 @@ export class AppComponent {
      $('head').append(this.materialStyles);
      this.container.prop('id', 'content-window');
    }
+
+   slideSidenav() {
+     $('#expand-mobile-nav').click();
+   }
 }

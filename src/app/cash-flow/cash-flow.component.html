@@ -57,7 +57,7 @@
 			</div>
 		</div>
 		<div class="card-action">
-			<a *ngIf="expansion === 'contracted'" href="" (click)="expand($event)" class="btn cxo-btn-primary">Adjust Projection</a>
+			<a *ngIf="expansion === 'contracted'" href="" (click)="expand($event)" class="btn cxo-btn-primary hide-on-small-only">Adjust Projection</a>
 			<a *ngIf="expansion === 'expanded'" (click)="createProjection()" class="btn cxo-btn-primary">Update Graph</a>
 			<a *ngIf="expansion === 'expanded'" (click)="showPlan($event)" class="btn grey">Get My Plan</a>
 			<a *ngIf="expansion === 'expanded'" (click)="prepareCashFlowData()" class="btn grey">Reset</a>

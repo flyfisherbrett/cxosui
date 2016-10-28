@@ -1,5 +1,5 @@
 <div class="row ribbon">
-  <div class="col s3">
+  <div class="col s12 m3">
     <p>Who I Owe</p>
     <span ng-init='viewAP = false' class="owe-pane">
       <h5 class="debt">{{ apTotal | currency:'USD':true:'1.2-2' }}</h5>
@@ -23,7 +23,7 @@
       </table>
     </div>
   </div>
-  <div class="col s3">
+  <div class="col s12 m3">
     <p>Who Owes Me</p>
     <span ng-init='viewAR = false' class="owe-pane">
       <h5 class="income">{{ arTotal | currency:'USD':true:'1.2-2' }}</h5>
@@ -47,14 +47,14 @@
       </table>
     </div>
   </div>
-  <div class="col s3">
+  <div class="col s12 m3">
     <p>Current Cash</p>
     <span class="owe-pane">
       <h5>{{ currentBalance | currency:'USD':true:'1.2-2' }}</h5>
 
     </span>
   </div>
-  <div class="col s3">
+  <div class="col s12 m3">
     <p>Cash in 7 Days</p>
     <h5>{{ oneWeekBalance | currency:'USD':true:'1.2-2' }}</h5>
   </div>
