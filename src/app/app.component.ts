@@ -21,7 +21,7 @@ export class AppComponent {
   isHome: boolean = false;
   showConnect: boolean = false
   materialStyles: any;
-  container: any;
+  container = $('#content-window');
   boostrapStyles: any;
 
   constructor(private modalService: ModalService, private sessionService: SessionService, private router: Router) {
