@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { EulaComponent } from './footer/eula.component';
 import { SupportComponent } from './footer/support.component';
 import { PrivacyComponent } from './footer/privacy.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 const appRoutes: Routes = [
@@ -62,6 +63,10 @@ const appRoutes: Routes = [
     {
         path: 'privacy_policy',
         component: PrivacyComponent
+    },
+    {
+        path: 'forgot_password',
+        component: ForgotPasswordComponent
     },
     {
         path: '**',

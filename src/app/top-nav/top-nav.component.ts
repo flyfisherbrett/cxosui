@@ -8,6 +8,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class TopNavComponent {
   @Output() sideNavChange = new EventEmitter();
   @Output() logout = new EventEmitter();
+  @Output() sidenavSlide = new EventEmitter();
   @Input() sideNavExpanded: boolean;
   @Input() loggedIn;
 
@@ -18,5 +19,9 @@ export class TopNavComponent {
 
   emitLogout() {
     this.logout.emit();
+  }
+
+  emitSidenavSlide() {
+    this.sidenavSlide.emit();
   }
 }

@@ -31,6 +31,7 @@ import { BenchmarksComponent } from './benchmarks/benchmarks.component';
 import { BenchmarkComponent } from './benchmarks/benchmark/benchmark.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ModalComponent } from './modal/modal.component';
@@ -60,6 +61,7 @@ import { QbConnectDirective } from './shared/directives/qb-connect.directive';
     ExpByCatComponent,
     ModalComponent,
     NotFoundComponent,
+    ForgotPasswordComponent,
     HomeComponent,
     EulaComponent,
     SupportComponent,
