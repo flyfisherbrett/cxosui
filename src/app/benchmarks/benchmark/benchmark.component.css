@@ -13,3 +13,8 @@
 .chart-div {
     height: 250px;
 }
+
+.md-16 {
+    font-size: 16px;
+    margin-right: 5px !important;
+}

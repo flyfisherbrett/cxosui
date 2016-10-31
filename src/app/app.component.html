@@ -1,15 +1,20 @@
-<!--<div *ngIf="!isHome">-->
-<app-top-nav *ngIf="!isHome" (sideNavChange)="toggleSideNav()" (logout)="logout()" [loggedIn]="loggedIn" [sideNavExpanded]="sideNavExpanded"></app-top-nav>
+<app-top-nav  *ngIf="!isHome" 
+              (sideNavChange)="toggleSideNav()" 
+              (logout)="logout()"
+              (sidenavSlide)="slideSidenav()" 
+              [loggedIn]="loggedIn" 
+              [sideNavExpanded]="sideNavExpanded"></app-top-nav>
 
 <div class="row">
   <div id="sidebar" class="side-nav fixed" *ngIf="sideNavExpanded && !isHome">
     <app-side-nav   [expanded]="sideNavExpanded"
-    [user]="user"
-    [companies]="companies"
-    [company]="company"
-    (companyChange)="setCompany($event)"
-    (addCompany)="showAddCompanyModal()"
-    (logout)="logout()"></app-side-nav>
+                    [user]="user"
+                    [companies]="companies"
+                    [company]="company"
+                    (companyChange)="setCompany($event)"
+                    (addCompany)="showAddCompanyModal()"
+                    (logout)="logout()">
+    </app-side-nav>
   </div>
 
   <div id="content-window" [class.side-nav-present]="sideNavExpanded && !isHome">
@@ -17,10 +22,30 @@
   </div>
 </div>
 
-
-<app-modal [modalHeader]="modalHeader" [modalBody]="modalBody"></app-modal>
-
 <div id="footer" [class.side-nav-present]="sideNavExpanded" *ngIf="!isHome">
   <app-footer [sideNavExpanded]="sideNavExpanded"></app-footer>
 </div>
-<!--</div>-->
+
+<!-- vvv hidden content vvv -->
+
+<app-modal [modalHeader]="modalHeader" [modalBody]="modalBody"></app-modal>
+
+<a  href="#"
+    id="expand-mobile-nav" 
+    materialize="sideNav"
+    [materializeParams]="[{closeOnClick: true}]"
+    data-activates="mobile-sidebar" 
+    class="button-collapse hide">
+  <i id="ham" class="material-icons md-18">menu</i>
+</a>
+
+<div id="mobile-sidebar" class="side-nav" *ngIf="sideNavExpanded && !isHome">
+  <app-side-nav   [expanded]="sideNavExpanded"
+                  [user]="user"
+                  [companies]="companies"
+                  [company]="company"
+                  (companyChange)="setCompany($event)"
+                  (addCompany)="showAddCompanyModal()"
+                  (logout)="logout()">
+  </app-side-nav>
+</div>

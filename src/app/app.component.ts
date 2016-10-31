@@ -21,7 +21,7 @@ export class AppComponent {
   isHome: boolean = false;
   showConnect: boolean = false
   materialStyles: any;
-  container: any;
+  container = $('#content-window');
   boostrapStyles: any;
 
   constructor(private modalService: ModalService, private sessionService: SessionService, private router: Router) {
@@ -120,5 +120,9 @@ export class AppComponent {
      this.boostrapStyles.remove();
      $('head').append(this.materialStyles);
      this.container.prop('id', 'content-window');
+   }
+
+   slideSidenav() {
+     $('#expand-mobile-nav').click();
    }
 }

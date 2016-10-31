@@ -16,6 +16,8 @@ import { EulaComponent } from './footer/eula.component';
 import { SupportComponent } from './footer/support.component';
 import { PrivacyComponent } from './footer/privacy.component';
 import { VerifyComponent } from './register/intuit/verify/verify.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+
 
 const appRoutes: Routes = [
     {
@@ -81,6 +83,10 @@ const appRoutes: Routes = [
     {
          path: 'verify',
         component: VerifyComponent
+    },
+    {
+        path: 'forgot_password',
+        component: ForgotPasswordComponent
     },
     {
         path: '**',

@@ -25,6 +25,18 @@ export class ProfileService {
     return this.http.put(environment.apiEndpoint + 'api/employees/' + employeeId, employeeParams, { headers: headers });
   }
 
+  updatePassword(oldVal, newVal, confirmVal, employeeId) {
+    let headers = new Headers();
+    headers.append('Authorization', this.sessionService.headerToken());
+    let params = {
+      current_password: oldVal,
+      password: newVal,
+      password_confirmation: confirmVal,
+      employee_id: employeeId
+    };
+    return this.http.post(environment.apiEndpoint + 'api/passwords/update_password', params, { headers: headers });
+  }
+
   profilePicture(userId, file) {
     return new Promise((resolve, reject) => {
       let xhr: XMLHttpRequest = new XMLHttpRequest();

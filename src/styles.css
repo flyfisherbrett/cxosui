@@ -24,3 +24,12 @@ body {
 .no-margin {
     margin: 0;
 }
+
+.cxo-link {
+    color: #1e7da9
+}
+
+.cxo-link:hover {
+    color: #075488;
+    font-weight: bold;
+}
